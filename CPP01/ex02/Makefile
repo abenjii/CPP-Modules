@@ -1,0 +1,35 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/03 18:47:02 by alex              #+#    #+#              #
+#    Updated: 2023/11/14 17:07:53 by alexfern         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = ex02
+CXX = c++
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98
+RM = rm -rf
+
+SRC =	main.cpp \
+
+OBJ = $(SRC:.cpp=.o)
+
+all : $(NAME)
+
+$(NAME) : $(OBJ)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
+
+clean:
+	$(RM) $(OBJ) $(NAME)
+	
+fclean : clean
+	$(RM) $(OBJ) $(NAME)
+
+re: fclean all
+
+.SILENT:
