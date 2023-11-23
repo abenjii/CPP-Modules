@@ -14,13 +14,15 @@
 
 int main()
 {
-	ClapTrap me("alexfern");
+	std::string name = "Alex";
+	std::string evaluator = "Unknown";
+	ClapTrap me(name);
 	ClapTrap you;
 	
 	std::cout << me.getName() << std::endl;
 	std::cout << you.getName() << std::endl;
 
-	you.setName("evaluator");
+	you.setName(evaluator);
 	std::cout << you.getName() << std::endl;
 	
 	std::cout << me.getEnergy() << std::endl;
@@ -34,7 +36,7 @@ int main()
 	std::cout << you.getHit() << std::endl;
 	std::cout << me.getEnergy() << std::endl;
 
-	
+	me.getDamage();
 	me.attack(you.getName());
 	me.attack(you.getName());
 	me.attack(you.getName());

@@ -19,7 +19,7 @@ ClapTrap::ClapTrap() : name("NULL") {
 	std::cout << "ClapTrap Default Constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string setname) : name(setname) {
+ClapTrap::ClapTrap(std::string &setname) : name(setname) {
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
@@ -43,7 +43,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &o_copy) {
 	return (*this);
 }
 
-void	ClapTrap::setName(const std::string name) {
+void	ClapTrap::setName(const std::string &name) {
 	this->name = name;
 }
 
@@ -60,7 +60,6 @@ void	ClapTrap::setHitPoints(const int nbr) {
 }
 
 std::string	ClapTrap::getName() const {
-	std::cout << "ClapTrap name is ";
 	return this->name;
 }
 

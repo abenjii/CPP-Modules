@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 17:17:46 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/16 15:56:21 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/23 09:41:53 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.h"
 
-ClapTrap::ClapTrap() : name("default") {
+ClapTrap::ClapTrap() : name("NULL") {
 	this->hitPoints = 10;
 	this->energyPoints = 10;
 	this->attackDamage = 0;
-	std::cout << "Default ClapTrap Constructor called" << std::endl;
+	std::cout << "ClapTrap Default Constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string setname) : name(setname) {
@@ -28,7 +28,7 @@ ClapTrap::ClapTrap(std::string setname) : name(setname) {
 
 
 ClapTrap::ClapTrap(const ClapTrap& copy) {
-	std::cout << "Copy ClapTrap Constructer called" << std::endl;
+	std::cout << "ClapTrap Copy Constructer called" << std::endl;
 	*this = copy;
 }
 
@@ -41,14 +41,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &o_copy) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap 	Destructor called" << std::endl;
+	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 std::string	ClapTrap::getName() const {
 	return this->name;
 }
 
-void	ClapTrap::setName(const std::string name) {
+void	ClapTrap::setName(const std::string &name) {
 	this->name = name;
 	return ;
 }

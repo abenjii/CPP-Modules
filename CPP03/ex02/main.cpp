@@ -17,12 +17,14 @@
 int main()
 {
 	FragTrap me;
+	std::string name = "Alexandre";
+	std::string target = "Alexandre";
 
-	me.setName("alexfern");
+	me.setName(name);
 	std::cout << me.getHit() << std::endl;
 	std::cout << me.getEnergy() << std::endl;
-	while (me.getEnergy() && me.getHit())
-		me.attack("Fernando");
+	while (me.getEnergy())
+		me.attack(target);
 	std::cout << me.getEnergy() << std::endl;
 	me.highFiveGuys();
 	return (0);

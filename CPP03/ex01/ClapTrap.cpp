@@ -48,7 +48,7 @@ std::string	ClapTrap::getName() const {
 	return this->name;
 }
 
-void	ClapTrap::setName(const std::string name) {
+void	ClapTrap::setName(const std::string &name) {
 	this->name = name;
 	return ;
 }

@@ -14,10 +14,12 @@
 
 int main()
 {
-	DiamondTrap me("alex");
+	std::string name = "Alexandre";
+	
+	DiamondTrap me(name);
 
-	std::cout << me.getHit() << std::endl;
+	std::cout << me.getHit() << std::endl;;
 	std::cout << me.getEnergy() << std::endl;
-	std::cout << me.getDamage() << std::endl;
+	std::cout << me.getDamage() <<std::endl;
 	return (0);
 }

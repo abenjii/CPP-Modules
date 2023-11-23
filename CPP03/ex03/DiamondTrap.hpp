@@ -20,12 +20,12 @@
 # include "FragTrap.h"
 # include "ClapTrap.h"
 
-class DiamondTrap : public FragTrap , public ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap {
 	private:
 		std::string name;
 	public:
 		DiamondTrap();
-		DiamondTrap(std::string name);
+		DiamondTrap(std::string &name);
 		DiamondTrap(const DiamondTrap &copy);
 		DiamondTrap &operator=(const DiamondTrap &o_copy);
 		~DiamondTrap();

@@ -28,11 +28,11 @@ class ClapTrap {
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 		ClapTrap(); //default contructor
-		ClapTrap(std::string setname); //constructor
+		ClapTrap(std::string &setname); //constructor
 		ClapTrap(const ClapTrap& copy); //copy constructor
 		ClapTrap & operator=(ClapTrap const &o_copy);
 		~ClapTrap(); //destructor
-		void		setName(const std::string name);
+		void		setName(const std::string &name);
 		void		setDamage(const int nbr);
 		void		setEnergyPoints(const int nbr);
 		void		setHitPoints(const int nbr);

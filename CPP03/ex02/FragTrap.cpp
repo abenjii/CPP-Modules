@@ -19,21 +19,18 @@ FragTrap::FragTrap() {
 	this->setEnergyPoints(100);
 	this->setDamage(30);
     std::cout << "FragTrap Default Constructor called." << std::endl;
-    return ;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+FragTrap::FragTrap(std::string &name) : ClapTrap(name) {
 	this->setName(name);
 	this->setHitPoints(100);
 	this->setEnergyPoints(100);
 	this->setDamage(30);
     std::cout << "FragTrap Constructor called." << std::endl;
-    return ;
 }
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy) {
     std::cout << "FragTrap Copy Constructor called." << std::endl;
-    return ;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &o_copy) {
@@ -44,10 +41,43 @@ FragTrap &FragTrap::operator=(const FragTrap &o_copy) {
 
 FragTrap::~FragTrap() {
     std::cout << "FragTrap Destructor called." << std::endl;
-    return ;
 }
 
 void    FragTrap::highFiveGuys() {
     std::cout << "Positive Hight fives request" << std::endl;
-	return ;
+}
+
+void	FragTrap::attack(const std::string &target) {
+	std::cout << "FragTrap " << this->name << " attacks " << target;
+	std::cout << ", causing " << this->getDamage() << " points of damage" << std::endl;
+    this->energyPoints--;
+}
+
+void	FragTrap::takeDamage(unsigned int amount) {
+	if (this->hitPoints)
+	{
+		std::cout << "FragTrap " << getName() << " got hit by " << amount;
+		std::cout << " damage." << std::endl;
+		this->hitPoints -= amount;
+	}
+	if (!this->hitPoints)
+		std::cout << "FragTrap " << getName() << " is death." << std::endl;	
+}
+
+void	FragTrap::beRepaired(unsigned int amount) {
+	
+	if (this->energyPoints && this->hitPoints)
+	{
+		std::cout << "FragTrap " << getName() << " repaired " << amount;
+		std::cout << " hit points." << std::endl;
+		this->energyPoints--;
+		this->hitPoints += amount; 
+	}
+	if (this->energyPoints <= 0 && this->hitPoints)
+	{
+		std::cout << "FragTrap " << getName() << " can't do anything without energy.";
+		std::cout << std::endl;
+	}
+	if (!this->hitPoints)
+		std::cout << "FragTrap " << getName() << " is death." << std::endl;
 }
