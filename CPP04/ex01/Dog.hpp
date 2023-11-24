@@ -21,7 +21,7 @@
 
 class Dog : public Animal {
 	private:
-		Brain *Dideas;
+		Brain *brain;
 	public:
 		Dog();
 		Dog(std::string type);

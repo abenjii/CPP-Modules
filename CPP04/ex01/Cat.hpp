@@ -21,7 +21,7 @@
 
 class Cat : public Animal {
     private:
-        Brain *Cideas;
+        Brain *brain;
     public:
         Cat();
         Cat(std::string type);

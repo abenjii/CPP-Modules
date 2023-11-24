@@ -29,7 +29,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 		DiamondTrap(const DiamondTrap &copy);
 		DiamondTrap &operator=(const DiamondTrap &o_copy);
 		~DiamondTrap();
-		void	attack(const std::string &target);
+		using ScavTrap::attack;
 		void	whoAmI();
 };
 

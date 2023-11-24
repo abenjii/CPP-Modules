@@ -48,9 +48,19 @@ void    FragTrap::highFiveGuys() {
 }
 
 void	FragTrap::attack(const std::string &target) {
-	std::cout << "FragTrap " << this->name << " attacks " << target;
-	std::cout << ", causing " << this->getDamage() << " points of damage" << std::endl;
-    this->energyPoints--;
+	if (this->energyPoints <= 0 && this->hitPoints)
+	{
+		std::cout << "FragTrap " << getName() << " can't do anything without energy ";
+		std::cout << std::endl;
+	}
+	if (this->hitPoints <= 0)
+		std::cout << "FragTrap " << getName() << " is death." << std::endl;
+	if (this->energyPoints && this->hitPoints)
+	{
+		std::cout << "FragTrap " << this->name << " attacks " << target;
+		std::cout << ", causing " << this->getDamage() << " points of damage" << std::endl;
+    	this->energyPoints--;
+	}
 }
 
 void	FragTrap::takeDamage(unsigned int amount) {
@@ -60,7 +70,7 @@ void	FragTrap::takeDamage(unsigned int amount) {
 		std::cout << " damage." << std::endl;
 		this->hitPoints -= amount;
 	}
-	if (!this->hitPoints)
+	if (this->hitPoints <= 0)
 		std::cout << "FragTrap " << getName() << " is death." << std::endl;	
 }
 
@@ -78,6 +88,6 @@ void	FragTrap::beRepaired(unsigned int amount) {
 		std::cout << "FragTrap " << getName() << " can't do anything without energy.";
 		std::cout << std::endl;
 	}
-	if (!this->hitPoints)
+	if (this->hitPoints <= 0)
 		std::cout << "FragTrap " << getName() << " is death." << std::endl;
 }
