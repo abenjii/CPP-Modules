@@ -10,17 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.h"
+#include "Cat.hpp"
 
 Cat::Cat() : Animal("Cat") {
-    std::cout << "Default Cat Constructor called." << std::endl;
+    brain = new Brain();
+    std::cout << "Cat Default Constructor called." << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal(type) {
+    brain = new Brain();
     std::cout << "Cat Constructor called." << std::endl;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy) {
+void    Cat::setType(std::string type) {
+    this->type = type; 
+}
+
+std::string Cat::getType() const{
+    return (this->type);
+}
+
+Cat::Cat(const Cat &copy) {
+    this->brain = new Brain(*copy.brain);
+    this->setType(copy.type);
     std::cout << "Cat Copy Constructor called." << std::endl;
 }
 
@@ -33,5 +45,6 @@ Cat& Cat::operator=(const Cat &o_copy) {
 }
 
 Cat::~Cat() {
+    delete brain;
     std::cout << "Cat Destructor called." << std::endl;
 }

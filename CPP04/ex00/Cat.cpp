@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.h"
+#include "Cat.hpp"
 
 Cat::Cat() : Animal("Cat") {
-    std::cout << "Default Cat Constructor called." << std::endl;
+    std::cout << "Cat Default Constructor called." << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal(type) {

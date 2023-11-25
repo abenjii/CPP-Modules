@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.h"
+#include "Animal.hpp"
 
 Animal::Animal(): type("unknown") {
 	std::cout << "Animal Default constructor called." << std::endl;
@@ -35,6 +35,14 @@ Animal& Animal::operator=(const Animal &o_copy) {
 
 Animal::~Animal() {
 	std::cout << this->type << " Destructor Animal called." << std::endl;
+}
+
+void	Animal::printAddress() const {
+	std::cout << &type << std::endl;
+}
+
+void	Animal::setType(std::string type) {
+	this->type = type;
 }
 
 std::string	Animal::getType() const {

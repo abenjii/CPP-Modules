@@ -28,6 +28,9 @@ class Dog : public Animal {
 		Dog(const Dog &copy);
 		Dog& operator=(const Dog &o_copy);
 		~Dog();
+
+		void    setType(std::string type);
+        std::string getType() const;
 };
 
 #endif

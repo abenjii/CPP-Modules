@@ -10,13 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.h"
+#include "Dog.hpp"
 
 Dog::Dog() : Animal("Dog") {
-	std::cout << "Default Dog Constructor called." << std::endl;
+	brain = new Brain();
+	std::cout << "Dog Default Constructor called." << std::endl;
 }
 
 Dog::Dog(std::string type) : Animal(type) {
+	brain = new Brain();
 	std::cout << "Dog Constructor called." << std::endl;
 }
 
@@ -32,6 +34,16 @@ Dog& Dog::operator=(const Dog &o_copy) {
 	return (*this);
 }
 
+void    Dog::setType(std::string type) {
+	this->type = type;
+}
+
+
+std::string Dog::getType() const {
+	return (this->type);
+}
+
 Dog::~Dog() {
+	delete brain;
 	std::cout << "Dog Destructor called." << std::endl;
 }

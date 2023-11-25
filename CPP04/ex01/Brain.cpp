@@ -38,7 +38,25 @@ Brain &Brain::operator=(const Brain &o_copy) {
 	return (*this);
 }
 
+void    Brain::setIdea(std::string &idea) {
+    for(int i = 0; i < 100; i++)
+    {
+        if (this->ideas[i] == "")
+            this->ideas[i] = idea;
+        else if (this->ideas[i] != "" && i == 99)
+            std::cout << "Full brain" << std::endl;
+    }
+}
+
+std::string Brain::getIdea(int pos) const {
+    std::string failMessage = "Idea not Set or Pos not between 0 - 99\n";
+
+    if (pos >= 0 && pos < 100)
+        return (this->ideas[pos]);
+    else
+        return (failMessage);
+}
+
 Brain::~Brain() {
     std::cout << "Brain Destructor called." << std::endl;
-    delete [] this->ideas;
 }

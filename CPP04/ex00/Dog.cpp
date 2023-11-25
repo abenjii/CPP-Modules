@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.h"
+#include "Dog.hpp"
 
 Dog::Dog() : Animal("Dog") {
-	std::cout << "Default Dog Constructor called." << std::endl;
+	std::cout << "Dog Default Constructor called." << std::endl;
 }
 
 Dog::Dog(std::string type) : Animal(type) {

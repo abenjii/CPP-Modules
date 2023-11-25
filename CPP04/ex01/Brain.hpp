@@ -19,14 +19,17 @@
 # include "Animal.hpp"
 
 class Brain {
+    private:
+        std::string ideas[100];
     public:
         Brain();
         Brain(std::string *newIdeas);
         Brain(const Brain &copy);
         Brain& operator=(const Brain &o_copy);
         ~Brain();
-    protected:
-        std::string ideas[100];
+
+        void        setIdea(std::string &idea);
+        std::string getIdea(int pos) const;
 };
 
 #endif
