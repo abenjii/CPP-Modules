@@ -24,14 +24,14 @@ class ClapTrap {
 		unsigned int	energyPoints;
 		unsigned int	attackDamage;
 	public:
-		virtual void	attack(const std::string &target);
-		virtual void	takeDamage(unsigned int amount);
-		virtual void	beRepaired(unsigned int amount);
+		void	attack(const std::string &target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 		ClapTrap(); //default contructor
 		ClapTrap(std::string setname); //constructor
 		ClapTrap(const ClapTrap& copy); //copy constructor
 		ClapTrap & operator=(ClapTrap const &o_copy);
-		virtual ~ClapTrap(); //destructor
+		~ClapTrap(); //destructor
 		void		setName(const std::string &name);
 		void		setDamage(const int nbr);
 		void		setEnergyPoints(const int nbr);

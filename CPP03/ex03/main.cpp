@@ -21,5 +21,6 @@ int main()
 	std::cout << me.getHit() << std::endl;;
 	std::cout << me.getEnergy() << std::endl;
 	std::cout << me.getDamage() <<std::endl;
+	me.attack("Marvin");
 	return (0);
 }
