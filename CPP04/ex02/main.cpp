@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:55:10 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/27 19:50:32 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:48:57 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ int	main()
 	morango.getCbrain().setIdeas("(cat)starving...\n");
 	morango.getCbrain().setIdeas("(cat)want to eat...\n");
 	morango.getCbrain().setIdeas("(cat)and drink...\n");
+	std::cout << std::endl;
+	morango.makeSound();
+	std::cout << std::endl;
 	std::cout << morango.getCbrain().getIdeas(0) << std::endl;
 	std::cout << morango.getCbrain().getIdeas(1) << std::endl;
 	std::cout << morango.getCbrain().getIdeas(2) << std::endl;
@@ -86,10 +89,19 @@ int	main()
 	brownie.getDbrain().setIdeas("(dog)starving...\n");
 	brownie.getDbrain().setIdeas("(dog)want to eat...\n");
 	brownie.getDbrain().setIdeas("(dog)and drink...\n");
+	std::cout << std::endl;
+	brownie.makeSound();
+	std::cout << std::endl;
 	std::cout << brownie.getDbrain().getIdeas(0) << std::endl;
 	std::cout << brownie.getDbrain().getIdeas(1) << std::endl;
 	std::cout << brownie.getDbrain().getIdeas(2) << std::endl;
 	std::cout << brownie.getDbrain().getIdeas(100) << std::endl;
+
+
+/* 	std::cout << "<<<<<<<<<<<Abstract Class's>>>>>>>>>>>" << std::endl;
+	Animal j;
+
+	j.makeSound(); */
 	
 	return (0);
 }

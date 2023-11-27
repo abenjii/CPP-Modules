@@ -6,11 +6,11 @@
 #    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 13:37:38 by alexfern          #+#    #+#              #
-#    Updated: 2023/11/27 19:42:59 by alexfern         ###   ########.fr        #
+#    Updated: 2023/11/27 17:54:49 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CXX = c++
 RM = rm -rf

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 10:39:15 by alex              #+#    #+#             */
-/*   Updated: 2023/11/27 13:39:45 by alex             ###   ########.fr       */
+/*   Created: 2023/11/16 14:49:19 by alexfern          #+#    #+#             */
+/*   Updated: 2023/11/27 13:41:56 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 # include <iostream>
 # include <fstream>
 # include <cmath>
@@ -19,22 +19,20 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class Cat : public Animal {
-    private:
-        Brain* brain;
-    public:
-        Cat();
-        Cat(std::string type);
-        Cat(const Cat &copy);
-        Cat &operator=(const Cat &o_copy);
-        ~Cat();
-        void    makeSound() const;
-        
-        void    setType(std::string type);
+class Dog : public Animal {
+	private:
+		Brain *brain;
+	public:
+		Dog();
+		Dog(std::string type);
+		Dog(const Dog &copy);
+		Dog& operator=(const Dog &o_copy);
+		~Dog();
+		void	makeSound() const;
+		void    setType(std::string type);
         std::string getType() const;
 
-        Brain &getCbrain() const;
-        
+		Brain &getDbrain() const;
 };
 
 #endif

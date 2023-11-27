@@ -5,22 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/16 13:37:38 by alexfern          #+#    #+#              #
-#    Updated: 2023/11/27 19:42:59 by alexfern         ###   ########.fr        #
+#    Created: 2023/11/27 17:50:29 by alexfern          #+#    #+#              #
+#    Updated: 2023/11/27 19:42:25 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+NAME = ex03
 CXX = c++
+CXXFLAGS = -Werror -Wall -Wextra -std=c++98 -fsanitize=address
 RM = rm -rf
 
 SRC = main.cpp \
-		Animal.cpp \
-		Dog.cpp \
-		Cat.cpp \
-		Brain.cpp \
-	  
 
 OBJ = $(SRC:.cpp=.o)
 

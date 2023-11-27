@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 13:37:38 by alexfern          #+#    #+#              #
-#    Updated: 2023/11/18 21:50:41 by alex             ###   ########.fr        #
+#    Updated: 2023/11/27 19:46:34 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-CXX = c++ -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+CXX = c++
 RM = rm -rf
 
 SRC = main.cpp \

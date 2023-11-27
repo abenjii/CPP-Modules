@@ -34,14 +34,13 @@ Dog& Dog::operator=(const Dog &o_copy) {
 	return (*this);
 }
 
-void    Dog::setType(std::string type) {
-	this->type = type;
-}
-
 void	Dog::makeSound() const {
 	std::cout << this->type << " BARK!" << std::endl;
 }
 
+void    Dog::setType(std::string type) {
+	this->type = type;
+}
 
 std::string Dog::getType() const {
 	return (this->type);

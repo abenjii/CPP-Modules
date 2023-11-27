@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 10:39:15 by alex              #+#    #+#             */
-/*   Updated: 2023/11/27 13:39:45 by alex             ###   ########.fr       */
+/*   Created: 2023/11/18 18:32:33 by alexfern          #+#    #+#             */
+/*   Updated: 2023/11/27 13:38:38 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 # include <iostream>
 # include <fstream>
 # include <cmath>
 # include <string>
 # include "Animal.hpp"
-# include "Brain.hpp"
 
-class Cat : public Animal {
+class Brain {
     private:
-        Brain* brain;
+        std::string ideas[100];
     public:
-        Cat();
-        Cat(std::string type);
-        Cat(const Cat &copy);
-        Cat &operator=(const Cat &o_copy);
-        ~Cat();
-        void    makeSound() const;
-        
-        void    setType(std::string type);
-        std::string getType() const;
+        Brain();
+        Brain(std::string *newIdeas);
+        Brain(const Brain &copy);
+        Brain& operator=(const Brain &o_copy);
+        ~Brain();
 
-        Brain &getCbrain() const;
-        
+        void        setIdeas(std::string idea);
+        std::string getIdeas(int pos) const;
 };
 
 #endif
