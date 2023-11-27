@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:49:19 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/18 19:18:48 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:41:56 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class Dog : public Animal {
 
 		void    setType(std::string type);
         std::string getType() const;
+
+		Brain &getDbrain() const;
 };
 
 #endif

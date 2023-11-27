@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:31:27 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/18 19:08:59 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:39:08 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,23 @@ Brain &Brain::operator=(const Brain &o_copy) {
 	return (*this);
 }
 
-void    Brain::setIdea(std::string &idea) {
+void    Brain::setIdeas(std::string idea) {
     for(int i = 0; i < 100; i++)
     {
         if (this->ideas[i] == "")
+        {
             this->ideas[i] = idea;
+            break ;
+        }
         else if (this->ideas[i] != "" && i == 99)
             std::cout << "Full brain" << std::endl;
     }
 }
 
-std::string Brain::getIdea(int pos) const {
-    std::string failMessage = "Idea not Set or Pos not between 0 - 99\n";
+std::string Brain::getIdeas(int pos) const {
+    std::string failMessage = "Idea not Set || Pos not between 0 - 99\n";
 
-    if (pos >= 0 && pos < 100)
+    if ((pos >= 0 && pos < 100) && this->ideas[pos] != "")
         return (this->ideas[pos]);
     else
         return (failMessage);

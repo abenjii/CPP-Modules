@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 10:43:26 by alex              #+#    #+#             */
-/*   Updated: 2023/11/17 10:58:35 by alex             ###   ########.fr       */
+/*   Updated: 2023/11/27 13:39:57 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ std::string Cat::getType() const{
     return (this->type);
 }
 
-Cat::Cat(const Cat &copy) {
+Cat::Cat(const Cat &copy) : Animal(copy.type){
     this->brain = new Brain(*copy.brain);
-    this->setType(copy.type);
     std::cout << "Cat Copy Constructor called." << std::endl;
 }
 
@@ -42,6 +41,10 @@ Cat& Cat::operator=(const Cat &o_copy) {
         return (*this);
     *this = o_copy;
     return (*this);
+}
+
+Brain &Cat::getCbrain() const {
+    return (*this->brain);
 }
 
 Cat::~Cat() {

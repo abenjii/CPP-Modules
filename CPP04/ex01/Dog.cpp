@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:53:33 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/17 10:51:15 by alex             ###   ########.fr       */
+/*   Updated: 2023/11/27 13:43:16 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::Dog(std::string type) : Animal(type) {
 	std::cout << "Dog Constructor called." << std::endl;
 }
 
-Dog::Dog(const Dog &copy) : Animal(copy) {
+Dog::Dog(const Dog &copy) : Animal(copy.type) {
 	std::cout << "Dog Copy Constructor called." << std::endl;
 }
 
@@ -38,9 +38,12 @@ void    Dog::setType(std::string type) {
 	this->type = type;
 }
 
-
 std::string Dog::getType() const {
 	return (this->type);
+}
+
+Brain &Dog::getDbrain() const {
+	return (*this->brain);
 }
 
 Dog::~Dog() {

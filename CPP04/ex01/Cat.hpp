@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 10:39:15 by alex              #+#    #+#             */
-/*   Updated: 2023/11/18 18:43:50 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:39:45 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 class Cat : public Animal {
     private:
-        Brain *brain;
+        Brain* brain;
     public:
         Cat();
         Cat(std::string type);
@@ -31,6 +31,9 @@ class Cat : public Animal {
         
         void    setType(std::string type);
         std::string getType() const;
+
+        Brain &getCbrain() const;
+        
 };
 
 #endif

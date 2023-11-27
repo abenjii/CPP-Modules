@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:32:33 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/18 18:58:10 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:38:38 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class Brain {
         Brain& operator=(const Brain &o_copy);
         ~Brain();
 
-        void        setIdea(std::string &idea);
-        std::string getIdea(int pos) const;
+        void        setIdeas(std::string idea);
+        std::string getIdeas(int pos) const;
 };
 
 #endif
