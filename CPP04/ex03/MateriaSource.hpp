@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:41:28 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/28 14:54:46 by alex             ###   ########.fr       */
+/*   Created: 2023/11/28 15:01:12 by alex              #+#    #+#             */
+/*   Updated: 2023/11/28 15:02:48 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
-#include "Character.hpp"
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
+# include <iostream>
+# include <string>
+# include <fstream>
 
-int main()
-{
-    ICharacter* you = new Character("Alex");
-    return (0);
-}
+#endif

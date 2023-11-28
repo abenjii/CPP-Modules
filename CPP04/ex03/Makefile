@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
+#    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:50:29 by alexfern          #+#    #+#              #
-#    Updated: 2023/11/27 19:42:25 by alexfern         ###   ########.fr        #
+#    Updated: 2023/11/28 09:42:20 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ CXXFLAGS = -Werror -Wall -Wextra -std=c++98 -fsanitize=address
 RM = rm -rf
 
 SRC = main.cpp \
+	AMateria.cpp \
+	ICharacter.cpp \
+	Character.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

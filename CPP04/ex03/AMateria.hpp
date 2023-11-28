@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:55:13 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/27 20:34:57 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:51:02 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class AMateria {
     protected:
-        std::string const type;
+        std::string const &type;
     public:
         AMateria ();
         AMateria (std::string const &type);
@@ -30,8 +30,7 @@ class AMateria {
         
         
         std::string const & getType() const;
-        //void    setType(std::string const &set);
-        
+        void    operator=(std::string const &set);
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

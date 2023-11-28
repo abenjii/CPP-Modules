@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:03:52 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/27 20:34:48 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:50:51 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,3 @@ AMateria::~AMateria () {
 std::string const &AMateria::getType () const {
     return (this->type);
 }
-
-/* void    AMateria::setType(std::string const &set) {
-    this->type = set;
-} */

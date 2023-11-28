@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:19:30 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/27 20:59:58 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:59:53 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 class ICharacter {
     protected:
         std::string const &name;
-        AMateria* materia[4];
     public :
         ICharacter();
         ICharacter(std::string const &name);

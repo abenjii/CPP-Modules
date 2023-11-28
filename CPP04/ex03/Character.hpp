@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 20:45:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/27 21:01:17 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:59:46 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ to their inventory. Of course, the Materias must be deleted when a Character is 
 
 class Character {
     private:
-        std::string name;    
+        std::string name;  
+        AMateria* materia[4];  
     public:
         Character();
         Character(std::string name);
