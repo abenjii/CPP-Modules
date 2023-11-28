@@ -16,6 +16,7 @@
 # include <cmath>
 # include <fstream>
 # include <string>
+# include "AMateria.hpp"
 
 
 /* Your Character must have a constructor taking its name as a parameter. Any copy
@@ -24,15 +25,19 @@ During copy, the Materias of a Character must be deleted before the new ones are
 to their inventory. Of course, the Materias must be deleted when a Character is destroyed.
  */
 
-class Character {
+class Character : public ICharacter {
     private:
         std::string name;  
-        AMateria* materia[4];  
+        AMateria* inv[4];  
     public:
         Character();
         Character(std::string name);
         Character(const Character &copy);
         Character &operator=(const Character &o_copy);
+        std::string const &getName() const;
+        void    equip(AMateria *m);
+        void    unequip(int idx);
+        void    use(int idx, ICharacter &target);
         ~Character();
 };
 

@@ -11,21 +11,30 @@
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "AMateria.hpp"
 
-Character::Character() : name("Default") {
+Character::Character() : name("Default")
+{
+    for (int i = 0; i < 4; i++)
+        inv[i] = 0;
     std::cout << "Character Default Constructor called." << std::endl;
 }
 
-Character::Character(std::string name) : name(name) {
+Character::Character(std::string name) : name(name)
+{
+    for (int i = 0; i < 4; i++)
+        inv[i] = 0;
     std::cout << "Character Constructor called. (" << this->name;
     std::cout << ")." << std::endl;
 }
 
-Character::Character(const Character &copy) : name(copy.name) {
+Character::Character(const Character &copy) : name(copy.name)
+{
     std::cout << "Character Copy Constructor called." << std::endl;
 }
 
-Character &Character::operator=(const Character &o_copy) {
+Character &Character::operator=(const Character &o_copy)
+{
     std::cout << "Character Assigment operator called." << std::endl;
     if (this == &o_copy)
         return (*this);
@@ -33,6 +42,11 @@ Character &Character::operator=(const Character &o_copy) {
     return (*this);
 }
 
-Character::~Character() {
+Character::~Character()
+{
     std::cout << "Default Destructor called." << std::endl;
+}
+
+void Character::equip(AMateria *m)
+{
 }

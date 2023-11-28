@@ -15,5 +15,21 @@
 # include <iostream>
 # include <string>
 # include <fstream>
+# include "IMateriaSource.hpp"
+
+class MateriaSource : public IMateriaSource {
+    private:
+        AMateria *learned[4];
+    public:
+        MateriaSource();
+        MateriaSource(std::string &type);
+        MateriaSource(const MateriaSource &copy);
+        MateriaSource &operator=(const MateriaSource &o_copy);
+        ~ MateriaSource();
+
+        void learnMateria(AMateria *tolearn);
+        AMateria* MateriaSource::createMateria(std::string const & type);
+
+};
 
 #endif

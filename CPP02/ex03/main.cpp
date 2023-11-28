@@ -17,7 +17,7 @@ int	main()
 	Point const a(0, 0);
 	Point const b(0, 5);
 	Point const c(5, 5);
-	Point const d(0, 4);
+	Point const d(4, 1);
 
 	if (bsp(a, b, c, d))
 		std::cout << "[ TRUE ]" << std::endl;

@@ -20,12 +20,11 @@
 
 class ICharacter {
     protected:
-        std::string const &name;
     public :
-        ICharacter();
+        /* ICharacter();
         ICharacter(std::string const &name);
         ICharacter(const ICharacter &copy);
-        ICharacter &operator=(const ICharacter &o_copy);
+        ICharacter &operator=(const ICharacter &o_copy); */
         virtual ~ICharacter();
 
         virtual std::string const &getName() const = 0;
