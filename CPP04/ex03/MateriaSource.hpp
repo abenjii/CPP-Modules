@@ -1,20 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 15:01:12 by alex              #+#    #+#             */
-/*   Updated: 2023/11/29 14:51:15 by alex             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 # include <iostream>
-# include <string>
-# include <fstream>
 # include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource {
@@ -27,7 +13,7 @@ class MateriaSource : public IMateriaSource {
         ~ MateriaSource();
 
         void learnMateria(AMateria *tolearn);
-        AMateria* MateriaSource::createMateria(std::string const & type);
+        AMateria* createMateria(std::string const & type);
 
 };
 

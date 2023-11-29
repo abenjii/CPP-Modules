@@ -13,26 +13,24 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 # include <iostream>
-# include <string>
-# include <fstream>
-# include <cmath>
 # include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria {
     protected:
-        std::string const &type;
+        std::string type;
     public:
         AMateria ();
         AMateria (std::string const &type);
         AMateria(const AMateria &copy);
         AMateria& operator=(const AMateria &o_copy); 
         virtual ~AMateria();
-        
-        
+
         std::string const & getType() const;
         void    operator=(std::string const &set);
         virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        virtual void use(ICharacter &target);
 };
 
 #endif

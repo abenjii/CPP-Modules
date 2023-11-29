@@ -9,6 +9,8 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
 {
+    for (int i = 0; i < 4; i++) // teste with sizeof(learned) / sizeof(AMaterial*)
+        this->learned[i] = copy.learned[i];
     std::cout << "MateriaSource Copy Constructor called." << std::endl;
 }
 
@@ -23,6 +25,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &o_copy)
 
 MateriaSource::~MateriaSource()
 {
+    for (int i = 0; i < 4; i++)
+        delete learned[i];
     std::cout << "MateriaSource Destructor called." << std::endl;
 }
 
@@ -43,6 +47,11 @@ void MateriaSource::learnMateria(AMateria *tolearn)
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
     for (int i = 0; i < 4; i++)
-        if (this->learned[i] && this->learned[i]->getType() == type)
+    {
+        if (this->learned[i] && this->learned[i]->getType() != type)
+            break ;
+        else if (this->learned[i] && this->learned[i]->getType() == type)
             return (this->learned[i]->clone());
+    }
+    return (0);
 }

@@ -17,8 +17,10 @@ RM = rm -rf
 
 SRC = main.cpp \
 	AMateria.cpp \
-	ICharacter.cpp \
+	Ice.cpp \
+	Cure.cpp \
 	Character.cpp \
+	ICharacter.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

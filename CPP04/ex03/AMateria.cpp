@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 18:03:52 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/28 14:50:51 by alex             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "AMateria.hpp"
 
-AMateria::AMateria() : type("Default") {
+AMateria::AMateria() {
     std::cout << "AMateria Default Constructor called." << std::endl;
 }
 
@@ -39,4 +27,9 @@ AMateria::~AMateria () {
 
 std::string const &AMateria::getType () const {
     return (this->type);
+}
+
+void    AMateria::use(ICharacter &target) {
+    std::cout << "AMateria: * shoots a " << this->type;
+    std::cout << " bolt at " << target.getName() << "." << std::endl;
 }

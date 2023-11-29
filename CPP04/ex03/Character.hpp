@@ -12,18 +12,15 @@
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
-# include <iostream>
-# include <cmath>
-# include <fstream>
-# include <string>
-# include "AMateria.hpp"
-
+#  include <iostream>
+#  include "ICharacter.hpp"
 
 /* Your Character must have a constructor taking its name as a parameter. Any copy
 (using copy constructor or copy assignment operator) of a Character must be deep.
 During copy, the Materias of a Character must be deleted before the new ones are added
 to their inventory. Of course, the Materias must be deleted when a Character is destroyed.
  */
+
 
 class Character : public ICharacter {
     private:

@@ -1,6 +1,6 @@
-#include "ICharacter.hpp"
+/* #include "ICharacter.hpp"
 
-/* ICharacter::ICharacter() {
+ICharacter::ICharacter() {
     std::cout << "ICharacter Default Constructor called." << std::endl;
 }
 
@@ -14,8 +14,8 @@ ICharacter &ICharacter::operator=(const ICharacter &o_copy) {
         return (*this);
     *this = o_copy;
     return (*this);
-} */
+}
 
 ICharacter::~ICharacter() {
     std::cout << "ICharacter Destructor called." << std::endl;
-}
+} */

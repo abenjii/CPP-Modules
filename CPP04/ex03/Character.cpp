@@ -1,17 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:50:33 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/27 20:59:24 by alexfern         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Character.hpp"
-#include "AMateria.hpp"
 
 Character::Character() : name("Default")
 {
@@ -42,11 +29,37 @@ Character &Character::operator=(const Character &o_copy)
     return (*this);
 }
 
+void Character::equip(AMateria *m) {
+    for (int i = 0; i < 4; i++)
+    {
+        this->inv[i] = &m[i];
+        std::cout << this->name << " equiped " << inv[i]->getType();
+        std::cout << "." << std::endl;
+    }
+}
+
+void    Character::unequip(int idx) {
+    if (idx >= 0 && idx < 4)
+    {
+        this->inv[idx] = 0;
+        std::cout << "Free space to equip a new Materia" << std::endl;
+    }
+    else if (!(idx >= 0 && idx < 4))
+    {
+        return ;
+    }
+}
+
+void    Character::use(int idx, ICharacter &target){
+    if (idx >= 0 && idx < 4)
+        this->inv[idx]->use(target);
+    else if (idx < 0 || idx >= 4)
+        std::cout << "Idx is invalid, 0 - 3" << std::endl;
+    else
+        std::cout << "Cant use the Materia" << std::endl;
+}
+
 Character::~Character()
 {
     std::cout << "Default Destructor called." << std::endl;
-}
-
-void Character::equip(AMateria *m)
-{
 }

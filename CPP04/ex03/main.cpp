@@ -1,20 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:41:28 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/28 14:54:46 by alex             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
 #include "Character.hpp"
-#include "Ice.hpp"
 #include "Cure.hpp"
+#include "Ice.hpp"
 #include "MateriaSource.hpp"
 
 int main()
