@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:01:12 by alex              #+#    #+#             */
-/*   Updated: 2023/11/28 15:02:48 by alex             ###   ########.fr       */
+/*   Updated: 2023/11/29 14:51:15 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class MateriaSource : public IMateriaSource {
         AMateria *learned[4];
     public:
         MateriaSource();
-        MateriaSource(std::string &type);
         MateriaSource(const MateriaSource &copy);
         MateriaSource &operator=(const MateriaSource &o_copy);
         ~ MateriaSource();

@@ -31,10 +31,18 @@ void MateriaSource::learnMateria(AMateria *tolearn)
     for (int i = 0; i < 4; i++)
     {
         if (this->learned[i] == 0)
-            
+        {
+            this->learned[i] = &tolearn[i];
+            std::cout << this->learned[i]->getType() << " added to Learn\n";
+            return ;
+        }
+        if (this->learned[i] != 0 && i == 3)
+            std::cout << "Already full of Materia's to learn" << std::endl;
     }
 }
 
-/* AMateria* MateriaSource::createMateria(std::string const & type) {
-    for (i <)
-} */
+AMateria* MateriaSource::createMateria(std::string const & type) {
+    for (int i = 0; i < 4; i++)
+        if (this->learned[i] && this->learned[i]->getType() == type)
+            return (this->learned[i]->clone());
+}
