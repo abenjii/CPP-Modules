@@ -10,11 +10,12 @@ Ice::Ice(const Ice &copy) : AMateria("ice") {
 }
 
 Ice &Ice::operator=(const Ice &o_copy) {
-    if (this == &o_copy)
-        return (*this);
-    *this = o_copy;
-    return (*this);
+    if (this != &o_copy)
+    {
+        this->type = o_copy.getType();
+    }
     std::cout << "Ice Assigment operator called." << std::endl;
+    return (*this);
 }
 
 void    Ice::use(ICharacter &target) {

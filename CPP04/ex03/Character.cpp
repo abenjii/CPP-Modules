@@ -23,16 +23,22 @@ Character &Character::operator=(const Character &o_copy)
 }
 
 void Character::equip(AMateria *m) {
+    if (m == NULL)
+        return ;
     for (int i = 0; i < 4; i++)
     {
-        if (this->inv[i] == 0)
+        if (this->inv[i] == NULL)
         {
             this->inv[i] = m;
             std::cout << this->name << " equiped " << this->inv[i]->getType();
             std::cout << "." << std::endl;
+            break ;
+        }
+        if (this->inv[i] != NULL && i >= 3)
+        {
+            std::cout << this->name << " can't equip " << m->getType() << std::endl;
         }
     }
-    std::cout << this->name << " can't equip " << m->getType() << std::endl;
 }
 
 void    Character::unequip(int idx) {
@@ -46,7 +52,7 @@ void    Character::unequip(int idx) {
 }
 
 void    Character::use(int idx, ICharacter &target){
-    if (idx >= 0 && idx < 4)
+    if (idx >= 0 && idx < 4 && this->inv[idx] != NULL)
         this->inv[idx]->use(target);
     else if (idx < 0 || idx >= 4)
         std::cout << "Idx is invalid, 0 - 3" << std::endl;

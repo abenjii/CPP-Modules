@@ -13,7 +13,9 @@ int main()
     tmp = src->createMateria("ice");
     me->equip(tmp);
     tmp = src->createMateria("cure");
+    std::cout << "DEBUG WARINING1" << std::endl;
     me->equip(tmp);
+    std::cout << "DEBUG WARINING2" << std::endl;
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
     me->use(1, *bob);

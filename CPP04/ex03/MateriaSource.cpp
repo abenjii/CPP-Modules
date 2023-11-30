@@ -36,7 +36,7 @@ void MateriaSource::learnMateria(AMateria *tolearn)
     {
         if (this->learned[i] == 0)
         {
-            this->learned[i] = &tolearn[i];
+            this->learned[i] = tolearn;
             std::cout << this->learned[i]->getType() << " added to Learn\n";
             return ;
         }

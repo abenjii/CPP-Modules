@@ -10,11 +10,12 @@ Cure::Cure(const Cure &copy) : AMateria("cure") {
 }
 
 Cure &Cure::operator=(const Cure &o_copy) {
-    if (this == &o_copy)
-        return (*this);
-    *this = o_copy;
-    return (*this);
+    if (this != &o_copy)
+    {
+        this->type = o_copy.getType();
+    }
     std::cout << "Cure Assigment operator called." << std::endl;
+    return (*this);
 }
 
 Cure::~Cure() {
