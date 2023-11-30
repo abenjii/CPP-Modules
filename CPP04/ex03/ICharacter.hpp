@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:19:30 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/28 14:59:53 by alex             ###   ########.fr       */
+/*   Updated: 2023/11/30 00:45:09 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class AMateria;
 class ICharacter {
     protected:
     public :
-        virtual ~ICharacter();
+        virtual ~ICharacter() {};
         virtual std::string const &getName() const = 0;
         virtual void equip(AMateria *m) = 0;
         virtual void unequip(int idx) = 0;

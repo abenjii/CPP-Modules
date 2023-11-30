@@ -1,6 +1,6 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria() {
+AMateria::AMateria() : type("default"){
     std::cout << "AMateria Default Constructor called." << std::endl;
 }
 
@@ -9,16 +9,9 @@ AMateria::AMateria(std::string const &type) : type(type) {
     std::cout << ")." << std::endl;
 }
 
-AMateria::AMateria(const AMateria &copy) : type(copy.type) {
+AMateria::AMateria(const AMateria &copy) {
+    *this = copy;
     std::cout << "AMateria Copy Constructor called." << std::endl;
-}
-
-AMateria &AMateria::operator=(const AMateria &o_copy) {
-    std::cout << "AMaterial Assigment operator called." << std::endl;
-    if (this == &o_copy)
-        return (*this);
-    *this = o_copy;
-    return (*this);
 }
 
 AMateria::~AMateria () {
@@ -32,4 +25,8 @@ std::string const &AMateria::getType () const {
 void    AMateria::use(ICharacter &target) {
     std::cout << "AMateria: * shoots a " << this->type;
     std::cout << " bolt at " << target.getName() << "." << std::endl;
+}
+
+AMateria* AMateria::clone() const {
+    return (AMateria*)this;
 }

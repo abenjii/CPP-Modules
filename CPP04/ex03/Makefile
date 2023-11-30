@@ -6,7 +6,7 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:50:29 by alexfern          #+#    #+#              #
-#    Updated: 2023/11/28 09:42:20 by alex             ###   ########.fr        #
+#    Updated: 2023/11/30 00:43:43 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = main.cpp \
 	Ice.cpp \
 	Cure.cpp \
 	Character.cpp \
-	ICharacter.cpp \
+	MateriaSource.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

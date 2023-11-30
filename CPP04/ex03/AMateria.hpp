@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:55:13 by alexfern          #+#    #+#             */
-/*   Updated: 2023/11/28 14:51:02 by alex             ###   ########.fr       */
+/*   Updated: 2023/11/30 00:09:17 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ class AMateria {
         AMateria ();
         AMateria (std::string const &type);
         AMateria(const AMateria &copy);
-        AMateria& operator=(const AMateria &o_copy); 
         virtual ~AMateria();
 
         std::string const & getType() const;
-        void    operator=(std::string const &set);
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter &target);
 };

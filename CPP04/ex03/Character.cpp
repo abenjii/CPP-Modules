@@ -1,16 +1,9 @@
 #include "Character.hpp"
 
-Character::Character() : name("Default")
-{
-    for (int i = 0; i < 4; i++)
-        inv[i] = 0;
-    std::cout << "Character Default Constructor called." << std::endl;
-}
-
 Character::Character(std::string name) : name(name)
 {
     for (int i = 0; i < 4; i++)
-        inv[i] = 0;
+        this->inv[i] = 0;
     std::cout << "Character Constructor called. (" << this->name;
     std::cout << ")." << std::endl;
 }
@@ -32,10 +25,14 @@ Character &Character::operator=(const Character &o_copy)
 void Character::equip(AMateria *m) {
     for (int i = 0; i < 4; i++)
     {
-        this->inv[i] = &m[i];
-        std::cout << this->name << " equiped " << inv[i]->getType();
-        std::cout << "." << std::endl;
+        if (this->inv[i] == 0)
+        {
+            this->inv[i] = m;
+            std::cout << this->name << " equiped " << this->inv[i]->getType();
+            std::cout << "." << std::endl;
+        }
     }
+    std::cout << this->name << " can't equip " << m->getType() << std::endl;
 }
 
 void    Character::unequip(int idx) {
@@ -44,10 +41,8 @@ void    Character::unequip(int idx) {
         this->inv[idx] = 0;
         std::cout << "Free space to equip a new Materia" << std::endl;
     }
-    else if (!(idx >= 0 && idx < 4))
-    {
-        return ;
-    }
+    else
+        std::cout << "Can't unequip that Materia" << std::endl;
 }
 
 void    Character::use(int idx, ICharacter &target){
@@ -62,4 +57,8 @@ void    Character::use(int idx, ICharacter &target){
 Character::~Character()
 {
     std::cout << "Default Destructor called." << std::endl;
+}
+
+std::string const& Character::getName() const {
+    return (this->name);
 }
