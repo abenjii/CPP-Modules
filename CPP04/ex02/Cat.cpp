@@ -22,13 +22,6 @@ Cat::Cat(std::string type) : Animal(type) {
     std::cout << "Cat Constructor called." << std::endl;
 }
 
-void    Cat::setType(std::string type) {
-    this->type = type; 
-}
-
-std::string Cat::getType() const{
-    return (this->type);
-}
 
 Cat::Cat(const Cat &copy) : Animal(copy.type){
     this->brain = new Brain(*copy.brain);
@@ -37,10 +30,20 @@ Cat::Cat(const Cat &copy) : Animal(copy.type){
 
 Cat& Cat::operator=(const Cat &o_copy) {
     std::cout << "Cat Assigment operator called." << std::endl;
-    if (this == &o_copy)
-        return (*this);
-    *this = o_copy;
+    if (this != &o_copy)
+    {
+        this->type = o_copy.type;
+        this->brain = o_copy.brain;
+    }
     return (*this);
+}
+
+void    Cat::setType(std::string type) {
+    this->type = type; 
+}
+
+std::string Cat::getType() const{
+    return (this->type);
 }
 
 void    Cat::makeSound() const {

@@ -45,9 +45,9 @@ int	main()
 	std::cout << "<<<<<<<<<<<Testing Deep Copies>>>>>>>>>>>" << std::endl;
 	std::cout << std::endl;
 	Animal* a = new Dog();
-	Animal* b = new Dog();
+	Animal* b = a->clone();
 	Animal* a2 = new Cat();
-	Animal* b2 = new Cat();
+	Animal* b2 = a2->clone();
 
 	std::cout << std::endl;
 	std::cout << "Dog class" << std::endl;

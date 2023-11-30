@@ -37,6 +37,14 @@ class Character : public ICharacter {
         void    unequip(int idx);
         void    use(int idx, ICharacter &target);
         ~Character();
+
+        virtual Character* clone() {
+            return new Character(*this);
+        }
+		virtual void	printAddress() const {
+            std::cout << &name << std::endl;
+        };
+
 };
 
 #endif

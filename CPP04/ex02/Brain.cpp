@@ -31,10 +31,11 @@ Brain::Brain(const Brain &copy) {
 
 Brain &Brain::operator=(const Brain &o_copy) {
     std::cout << "Brain Assigment operator called." << std::endl;
-    if (this == &o_copy)
-		return (*this);
-    for (int i = 0; i < 100; i++)
-	    this->ideas[i] = o_copy.ideas[i];
+    if (this != &o_copy)
+    {
+        for (int i = 0; i < 100; i++)
+	        this->ideas[i] = o_copy.ideas[i];
+    }
 	return (*this);
 }
 

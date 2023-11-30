@@ -4,54 +4,61 @@ MateriaSource::MateriaSource()
 {
     for (int i = 0; i < 4; i++) // teste with sizeof(learned) / sizeof(AMaterial*)
         this->learned[i] = 0;
-    std::cout << "MateriaSource Default Constructor called." << std::endl;
+    //std::cout << "MateriaSource Default Constructor called." << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
 {
-    for (int i = 0; i < 4; i++) // teste with sizeof(learned) / sizeof(AMaterial*)
-        this->learned[i] = copy.learned[i];
-    std::cout << "MateriaSource Copy Constructor called." << std::endl;
+    //std::cout << "MateriaSource Copy Constructor called." << std::endl;
+    *this = copy;
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &o_copy)
 {
-    if (this == &o_copy)
-        return (*this);
-    *this = o_copy;
+    if (this != &o_copy)
+    {
+        for (int i =0; i < 4; i++)
+            learned[i] = o_copy.learned[i];
+    }
+    //std::cout << "MateriaSource Assigment operator called" << std::endl;
     return (*this);
-    std::cout << "MateriaSource Assigment operator called" << std::endl;
 }
 
 MateriaSource::~MateriaSource()
 {
     for (int i = 0; i < 4; i++)
-        delete learned[i];
-    std::cout << "MateriaSource Destructor called." << std::endl;
+    {
+        if (learned[i] != NULL)
+            delete learned[i];
+    }
+    //std::cout << "MateriaSource Destructor called." << std::endl;
 }
 
 void MateriaSource::learnMateria(AMateria *tolearn)
 {
+    if (this->learned[3] != NULL)
+    {
+        delete tolearn;
+        std::cout << "Already full Materia to learn" << std::endl;
+        return ;
+    }
     for (int i = 0; i < 4; i++)
     {
-        if (this->learned[i] == 0)
+        if (this->learned[i] == NULL)
         {
             this->learned[i] = tolearn;
-            std::cout << this->learned[i]->getType() << " added to Learn\n";
+            //std::cout << this->learned[i]->getType() << " added to Learn\n";
             return ;
         }
-        if (this->learned[i] != 0 && i == 3)
-            std::cout << "Already full of Materia's to learn" << std::endl;
     }
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
     for (int i = 0; i < 4; i++)
     {
-        if (this->learned[i] && this->learned[i]->getType() != type)
-            break ;
-        else if (this->learned[i] && this->learned[i]->getType() == type)
+        if (this->learned[i] && this->learned[i]->getType() == type)
             return (this->learned[i]->clone());
     }
+    //std::cout << "Wrong Materia Type (" << type << ")" << std::endl;
     return (0);
 }

@@ -23,19 +23,18 @@ Dog::Dog(std::string type) : Animal(type) {
 }
 
 Dog::Dog(const Dog &copy) : Animal(copy.type) {
+	this->brain = new Brain(*copy.brain);
 	std::cout << "Dog Copy Constructor called." << std::endl;
 }
 
 Dog& Dog::operator=(const Dog &o_copy) {
 	std::cout << "Dog Copy Assigment called" << std::endl;
-	if (this == &o_copy)
-		return (*this);
-	*this = o_copy;
+	if (this != &o_copy)
+    {
+        this->type = o_copy.type;
+        this->brain = o_copy.brain;
+    }
 	return (*this);
-}
-
-void	Dog::makeSound() const {
-	std::cout << this->type << " BARK!" << std::endl;
 }
 
 void    Dog::setType(std::string type) {
@@ -44,6 +43,10 @@ void    Dog::setType(std::string type) {
 
 std::string Dog::getType() const {
 	return (this->type);
+}
+
+void	Dog::makeSound() const {
+	std::cout << this->type << " BARK!" << std::endl;
 }
 
 Brain &Dog::getDbrain() const {

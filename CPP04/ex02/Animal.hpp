@@ -28,6 +28,7 @@ class Animal {
 		virtual ~Animal();
 		virtual void	makeSound() const = 0;
 		virtual void	printAddress() const;
+		virtual Animal* clone() const = 0;
 
 		void	setType(std::string type);
 		std::string	getType() const;

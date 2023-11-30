@@ -34,7 +34,9 @@ class Cat : public Animal {
         std::string getType() const;
 
         Brain &getCbrain() const;
-        
+        virtual Cat* clone() const {
+			return new Cat(*this);
+		}
 };
 
 #endif
