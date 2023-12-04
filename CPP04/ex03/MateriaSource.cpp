@@ -57,8 +57,10 @@ AMateria* MateriaSource::createMateria(std::string const & type) {
     for (int i = 0; i < 4; i++)
     {
         if (this->learned[i] && this->learned[i]->getType() == type)
+        {
             return (this->learned[i]->clone());
+        }
     }
-    //std::cout << "Wrong Materia Type (" << type << ")" << std::endl;
+    std::cout << "Wrong Materia Type (" << type << ")" << std::endl;
     return (0);
 }

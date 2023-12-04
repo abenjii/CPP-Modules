@@ -16,22 +16,24 @@ int main()
     me->equip(tmp);
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
-    //std::cout << "DEBUG WARINING1" << std::endl;
     me->use(1, *bob);
-    //std::cout << "DEBUG WARINING2" << std::endl;
 
-/*     std::cout << std::endl;
+    std::cout << std::endl;
     std::cout << std::endl;
     std::cout << "<<<<<<<<<<<Testing Deep Copies>>>>>>>>>>>" << std::endl;
 	std::cout << std::endl;
-	ICharacter* a = new Character("alex");
-	ICharacter* a2 = a->clone();
 
 	std::cout << std::endl;
-	a->printAddress();
-	a2->printAddress();
+    ICharacter* bob1;
+
+    bob1 = bob;
+
+    std::cout << bob->getName() << std::endl;
+    std::cout << bob1->getName() << std::endl;
+	bob->printAddress();
+    bob1->printAddress();
 	std::cout << std::endl;
- */
+    
     delete bob;
     delete me;
     delete src;
@@ -50,13 +52,20 @@ int main()
     std::cout << std::endl;
     std::cout << "<<<< wrong type >>>>>" << std::endl;
     ICharacter* evaluator = new Character("evaluator");
+    ICharacter* alexfern = new Character("alexfern");
     AMateria* tmp1;
     tmp1 = src2->createMateria("ice1");
     evaluator->equip(tmp1);
     tmp1 = src2->createMateria("curee");
+    evaluator->equip(tmp1);
     tmp1 = src2->createMateria("ice");
+    evaluator->equip(tmp1);
     tmp1 = src2->createMateria("cure");
-    
+    evaluator->equip(tmp1);
+    evaluator->use(0, *alexfern);
+    evaluator->use(1, *alexfern);
+
+    delete alexfern;
     delete evaluator;
     delete src2;
     return 0;

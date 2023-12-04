@@ -8,9 +8,16 @@ Character::Character(std::string name) : name(name)
     //std::cout << ")." << std::endl;
 }
 
-Character::Character(const Character &copy) : name(copy.name)
+Character::Character(const Character &copy)
 {
-    *this = copy;
+    this->name = copy.name;
+    for (int i = 0; i < 0; i++)
+    {
+        if (this->inv[i] != NULL)
+            this->inv[i] = copy.inv[i];
+        else
+            break ;
+    }
     //std::cout << "Character Copy Constructor called." << std::endl;
 }
 
@@ -21,14 +28,20 @@ Character &Character::operator=(const Character &o_copy)
     {
         this->name = o_copy.getName();
         for (int i = 0; i < 4; i++)
-            this->inv[i] = o_copy.inv[i];
+        {
+            if (this->inv[i] != NULL)
+                this->inv[i] = o_copy.inv[i];
+        }
     }
     return (*this);
 }
 
 void Character::equip(AMateria *m) {
     if (m == NULL)
+    {
+        std::cout << "No Materia to learn" << std::endl;
         return ;
+    }
     if (m->getType() != "cure" && m->getType() != "ice")
     {
         std::cout << this->name << " can't equip " << m->getType() << std::endl;
@@ -60,22 +73,20 @@ void    Character::unequip(int idx) {
 }
 
 void    Character::use(int idx, ICharacter &target){
-    if (this->inv[idx] == NULL)
+    if (idx < 0 || idx >= 4 || this->inv[idx] == NULL)
     {
         std::cout << "Cant use the Materia" << std::endl;
         return ;
     }
     if (idx >= 0 && idx < 4 && this->inv[idx] != NULL)
         this->inv[idx]->use(target);
-    else if (idx < 0 || idx >= 4)
-        std::cout << "Idx is invalid, 0 - 3" << std::endl;
 }
 
 Character::~Character()
 {
     for (int i = 0; i < 4; i++)
     {
-        //if (this->inv[i] != NULL)
+        if (this->inv[i] != NULL)
             delete this->inv[i];
     }
     //std::cout << "Default Destructor called." << std::endl;

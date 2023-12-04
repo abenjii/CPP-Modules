@@ -17,79 +17,78 @@
 
 int	main()
 {
-	Animal* animals[4];
+	// Animal* animals[4];
 
-	std::cout << std::endl;
-	for (int i = 0; i < 2; i++)
-	{
-		animals[i] = new Dog();
-		std::cout << animals[i]->getType() << std::endl;
-		std::cout << std::endl;
-	}
+	// std::cout << std::endl;
+	// for (int i = 0; i < 2; i++)
+	// {
+	// 	animals[i] = new Dog();
+	// 	std::cout << animals[i]->getType() << std::endl;
+	// 	std::cout << std::endl;
+	// }
 	
-	for (int i = 2; i < 4; i++)
-	{
-		animals[i] = new Cat();
-		std::cout << animals[i]->getType() << std::endl;
-		std::cout << std::endl;
-	}
+	// for (int i = 2; i < 4; i++)
+	// {
+	// 	animals[i] = new Cat();
+	// 	std::cout << animals[i]->getType() << std::endl;
+	// 	std::cout << std::endl;
+	// }
 
-	for (int j = 0; j < 4; j++)
-	{
-		std::cout << animals[j]->getType() << std::endl;
-		std::cout << std::endl;
-		delete animals[j];
-	}
+	// for (int j = 0; j < 4; j++)
+	// {
+	// 	std::cout << animals[j]->getType() << std::endl;
+	// 	std::cout << std::endl;
+	// 	delete animals[j];
+	// }
 
-	std::cout << std::endl;
-	std::cout << "<<<<<<<<<<<Testing Deep Copies>>>>>>>>>>>" << std::endl;
-	std::cout << std::endl;
-	Animal* a = new Dog();
-	Animal* b = new Dog();
-	Animal* a2 = new Cat();
-	Animal* b2 = new Cat();
+	// std::cout << std::endl;
+	// std::cout << "<<<<<<<<<<<Testing Deep Copies>>>>>>>>>>>" << std::endl;
+	// std::cout << std::endl;
+	// Animal* a = new Dog();
+	// Animal* b = new Dog();
+	// Animal* a2 = new Cat();
+	// Animal* b2 = new Cat();
 
-	std::cout << std::endl;
-	std::cout << "Dog class" << std::endl;
-	a->printAddress();
-	b->printAddress();
-	std::cout << std::endl;
-	std::cout << "Cat class" << std::endl;
-	a2->printAddress();
-	b2->printAddress();
+	// std::cout << std::endl;
+	// std::cout << "Dog class" << std::endl;
+	// a->printAddress();
+	// b->printAddress();
+	// std::cout << std::endl;
+	// std::cout << "Cat class" << std::endl;
+	// a2->printAddress();
+	// b2->printAddress();
 	
-	std::cout << std::endl;
-	std::cout << "<<<<<<<<<<<Free Memory>>>>>>>>>>>" << std::endl;
-	delete a;
-	delete b;
-	delete a2;
-	delete b2;
+	// std::cout << std::endl;
+	// std::cout << "<<<<<<<<<<<Free Memory>>>>>>>>>>>" << std::endl;
+	// delete a;
+	// delete b;
+	// delete a2;
+	// delete b2;
 
-	std::cout << std::endl;
-	std::cout << "<<<<<<<<<<<Testing Brain Works>>>>>>>>>>>" << std::endl;
-	std::cout << std::endl;
+	// std::cout << std::endl;
+	// std::cout << "<<<<<<<<<<<Testing Brain Works>>>>>>>>>>>" << std::endl;
+	// std::cout << std::endl;
 	
-	Cat morango;
+	// Cat morango;
 
-	morango.getCbrain().setIdeas("(cat)starving...\n");
-	morango.getCbrain().setIdeas("(cat)want to eat...\n");
-	morango.getCbrain().setIdeas("(cat)and drink...\n");
-	std::cout << morango.getCbrain().getIdeas(0) << std::endl;
-	std::cout << morango.getCbrain().getIdeas(1) << std::endl;
-	std::cout << morango.getCbrain().getIdeas(2) << std::endl;
-	std::cout << morango.getCbrain().getIdeas(100) << std::endl;
-	std::cout << std::endl;
+	// morango.getCbrain().setIdeas("(cat)starving...\n");
+	// morango.getCbrain().setIdeas("(cat)want to eat...\n");
+	// morango.getCbrain().setIdeas("(cat)and drink...\n");
+	// std::cout << morango.getCbrain().getIdeas(0) << std::endl;
+	// std::cout << morango.getCbrain().getIdeas(1) << std::endl;
+	// std::cout << morango.getCbrain().getIdeas(2) << std::endl;
+	// std::cout << morango.getCbrain().getIdeas(100) << std::endl;
+	// std::cout << std::endl;
 
 
-	Dog brownie;
+	// Dog brownie;
 	
-	brownie.getDbrain().setIdeas("(dog)starving...\n");
-	brownie.getDbrain().setIdeas("(dog)want to eat...\n");
-	brownie.getDbrain().setIdeas("(dog)and drink...\n");
-	std::cout << brownie.getDbrain().getIdeas(0) << std::endl;
-	std::cout << brownie.getDbrain().getIdeas(1) << std::endl;
-	std::cout << brownie.getDbrain().getIdeas(2) << std::endl;
-	std::cout << brownie.getDbrain().getIdeas(100) << std::endl;
-	
+	// brownie.getDbrain().setIdeas("(dog)starving...\n");
+	// brownie.getDbrain().setIdeas("(dog)want to eat...\n");
+	// brownie.getDbrain().setIdeas("(dog)and drink...\n");
+	// std::cout << brownie.getDbrain().getIdeas(0) << std::endl;
+	// std::cout << brownie.getDbrain().getIdeas(1) << std::endl;
+	// std::cout << brownie.getDbrain().getIdeas(2) << std::endl;
+	// std::cout << brownie.getDbrain().getIdeas(100) << std::endl;
 	return (0);
 }
