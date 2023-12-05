@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 # include <iostream>
+# include <exception>
 
 class Bureaucrat {
     private:
@@ -15,7 +16,20 @@ class Bureaucrat {
         int getGrade() const;
         void    incrementGrade();
         void    decrementGrade();
+        class   GradeTooHighException : public std::exception {
+            virtual const char* what() const throw() {
+                return ("My exception Too High Happened");
+            }
+        };
+        class   GradeTooLowException : public std::exception {
+            virtual const char * what() const throw () {
+                return ("My eception Too Low Happened");
+            }
+        };
         ~Bureaucrat();
 };
+
+std::ostream& operator<<( std::ostream& o, const Bureaucrat& rhs );
+
 
 #endif

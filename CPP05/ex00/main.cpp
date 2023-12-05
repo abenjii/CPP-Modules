@@ -2,26 +2,29 @@
 
 int main()
 {
-    Bureaucrat* a = new Bureaucrat("alex", 15);
+    Bureaucrat a("alex", 10);
 
-    std::cout << a->getGrade() << std::endl;
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    a->incrementGrade();
-    std::cout << a->getGrade() << std::endl;
-    a->incrementGrade();
-    std::cout << a->getGrade() << std::endl;
-    delete a;
+    for (int i = 0; i < 10; i++)
+    {
+        try {
+            a.incrementGrade();
+        }
+        catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        std::cout << a << std::endl;
+    }
+
+    Bureaucrat b("evaluator", 141);
+    for (int i = 0; i < 10; i++)
+    {
+        try {
+            b.decrementGrade();
+        }
+        catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        std::cout << b << std::endl;
+    }
     return (0);
 }

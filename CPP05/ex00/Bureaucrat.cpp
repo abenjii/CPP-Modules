@@ -1,10 +1,15 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(0) {
+Bureaucrat::Bureaucrat() : name("Default"), grade(1) {
     std::cout << "Bureaucrat Default Constructor called." << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade){
+Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name){
+    if (grade < 1)
+        GradeTooHighException();
+    if (grade > 150)
+        GradeTooLowException();
+    this->grade = grade;
     std::cout << "Bureaucrat Constructor called." << std::endl;
 }
 
@@ -30,23 +35,26 @@ int Bureaucrat::getGrade() const {
 void    Bureaucrat::incrementGrade() {
     if ((this->grade - 1) < 1)
     {
-        std::cout << "Too Hight Grade." << std::endl;  
-        return ;
-        //guess its similar to this output but need to understand exceptions first
+        throw GradeTooHighException();
     }
+    //std::cout << "incremented his Grade :'D\n";
     this->grade = this->grade - 1;
 }
 
 void    Bureaucrat::decrementGrade() {
     if ((this->grade + 1) > 150)
     {
-        std::cout << "Too Low Grade." << std::endl;
-        return ;
-        //guess its similar to this output but need to understand exceptions first
+        throw GradeTooLowException();
     }
+    //std::cout << "decremented his Grade :'C\n";
     this->grade = this->grade + 1;
 }
 
 Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat Destructor called." << std::endl;
+}
+
+std::ostream& operator<<( std::ostream& o, const Bureaucrat& rhs ) {
+    o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+    return o;
 }
