@@ -2,6 +2,7 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <exception>
+# include "Form.hpp"
 
 class Bureaucrat {
     private:
@@ -27,6 +28,8 @@ class Bureaucrat {
             }
         };
         ~Bureaucrat();
+
+        void    signForm(Form &a);
 };
 
 std::ostream& operator<<( std::ostream& o, const Bureaucrat& rhs );

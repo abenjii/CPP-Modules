@@ -2,7 +2,7 @@
 
 int main()
 {
-    Bureaucrat a("alex", 10);
+    Bureaucrat a("alex", 20);
 
     for (int i = 0; i < 10; i++)
     {
@@ -14,8 +14,15 @@ int main()
         }
         std::cout << a << std::endl;
     }
-
-    Bureaucrat b("evaluator", 141);
+    Form b("Form B", 15, 15);
+    try {
+        b.beSigned(a);
+    }
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    a.signForm(b);
+/*     Bureaucrat b("evaluator", 141);
     for (int i = 0; i < 10; i++)
     {
         try {
@@ -25,6 +32,6 @@ int main()
             std::cout << e.what() << std::endl;
         }
         std::cout << b << std::endl;
-    }
+    } */
     return (0);
 }

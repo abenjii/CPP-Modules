@@ -1,11 +1,22 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
-Form::Form() : name("Default"), signature(false), toSign(15), toExec(10) {
+Form::Form() : name("Default"), toSign(20), toExec(20) {
+    this->signature = false;
     std::cout << "Form Default Constructor called." << std::endl;
 }
 
 Form::Form(std::string const name, int toSign, int toExec) 
 : name(name), toSign(toSign), toExec(toExec) {
+    if (toSign  > 150 || toExec > 150)
+    {
+        throw Form::GradeTooLowException();
+    }
+    if (toSign < 1 || toExec < 1)
+    {
+        throw Form::GradeTooHighException();
+    }
+    this->signature = false;
     std::cout << "Form Constructor called." << std::endl;
 }
 
@@ -32,16 +43,16 @@ bool    Form::getSignature() const {
     return (this->signature);
 }
 
-int Form::getFGrade () const {
+int Form::getToSign () const {
     return (this->toSign);
 }
 
-int Form::getGradeToExec () const {
+int Form::getToExec () const {
     return (this->toExec);
 }
 
 void    Form::beSigned(const Bureaucrat &a) {
     if (a.getGrade() > this->toSign)
-        throw Form::GradeTooLowException();
+        throw GradeTooLowException();
     this->signature = true;
 }
