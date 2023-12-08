@@ -27,6 +27,7 @@ class Bureaucrat {
                 return ("My eception Too Low Happened");
             }
         };
+        
         ~Bureaucrat();
         void    executeForm(AForm const & form);
 

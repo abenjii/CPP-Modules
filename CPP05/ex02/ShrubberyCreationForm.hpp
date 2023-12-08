@@ -1,19 +1,19 @@
-#ifndef SHRUBBERY_HPP
-# define SHRUBBERY_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 # include <iostream>
 # include "AForm.hpp"
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 # include <fstream>
 
-class Shrubbery: public AForm {
+class ShrubberyCreationForm: public AForm {
     private:
-        std::string target;
+        std::string const target;
     public:
-        Shrubbery();
-        Shrubbery(std::string target);
-        Shrubbery(const Shrubbery &copy);
-        Shrubbery &operator=(const Shrubbery &o_copy);
-        ~Shrubbery();
+        ShrubberyCreationForm();
+        ShrubberyCreationForm(std::string target);
+        ShrubberyCreationForm(const ShrubberyCreationForm &copy);
+        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &o_copy);
+        ~ShrubberyCreationForm();
 
         std::string getName() const;
 
@@ -27,7 +27,7 @@ class Shrubbery: public AForm {
 
         class fileNotOpen : public std::exception {
             virtual const char * what() const throw() {
-                return ("Error file not open");
+                return ("Error opening file");
             }
         };
 };

@@ -71,6 +71,8 @@ void    Bureaucrat::signForm(AForm &a) {
 }
 
 void    Bureaucrat::executeForm(AForm const & form) {
+    if (!form.getSignature())
+        throw AForm::notSignedForm();
     if (this->getGrade() > form.getToExec())
         throw AForm::noGradeToExec();
     form.execForm(*this);

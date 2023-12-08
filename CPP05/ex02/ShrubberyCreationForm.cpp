@@ -1,41 +1,43 @@
-#include "Shrubbery.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 class Bureaucrat;
 
-Shrubbery::Shrubbery() : target("Default") {
-    std::cout << "Shrubbery Default Constructor called." << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm() : target("Default") {
+    std::cout << "ShrubberyCreationForm Default Constructor called." << std::endl;
 }
 
-Shrubbery::Shrubbery(std::string target) : AForm("Shrubbery", 145, 137), target(target) {
-    std::cout << "Shrubbery Constructor called." << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target) {
+    std::cout << "ShrubberyCreationForm Constructor called." << std::endl;
 }
 
-Shrubbery::Shrubbery(const Shrubbery &copy) :AForm(copy), target(copy.target) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) :AForm(copy), target(copy.target) {
     //*this = copy;
-    std::cout << "Shrubbery Copy Constructor called." << std::endl;
+    std::cout << "ShrubberyCreationForm Copy Constructor called." << std::endl;
 }
 
-Shrubbery& Shrubbery::operator=(const Shrubbery &o_copy) {
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &o_copy) {
     if (this != &o_copy)
         *this = o_copy;
-    std::cout << "Shrubbery Assigment operator called." << std::endl;
+    std::cout << "ShrubberyCreationForm Assigment operator called." << std::endl;
     return (*this);
 } 
 
-Shrubbery::~Shrubbery() {
-    std::cout << "Shrubbery Destructor called." << std::endl;
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+    std::cout << "ShrubberyCreationForm Destructor called." << std::endl;
 }
 
-void    Shrubbery::execForm(const Bureaucrat& executor) const {
+void    ShrubberyCreationForm::execForm(const Bureaucrat& executor) const {
     std::string fileName = this->getName() + "_shrubbery";
     std::ofstream file;
     
     file.open(fileName.c_str(), std::ofstream::out);
     try {
+        if (this->getSignature() == false)
+            throw ShrubberyCreationForm::notSignedForm();
         if (executor.getGrade() > 137)
-            throw Shrubbery::gradeToExecLow();
+            throw ShrubberyCreationForm::gradeToExecLow();
         if (!file.is_open())
-            throw Shrubbery::fileNotOpen();
+            throw ShrubberyCreationForm::fileNotOpen();
         file << "          .     .  .      +     .      .          .\n"
         "     .       .      .     #       .           .\n"
         "        .      .         ###            .      .      .\n"
@@ -60,6 +62,6 @@ void    Shrubbery::execForm(const Bureaucrat& executor) const {
     }
 }
 
-std::string Shrubbery::getName() const {
+std::string ShrubberyCreationForm::getName() const {
     return (this->target);
 }

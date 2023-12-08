@@ -6,7 +6,8 @@ RM = rm -rf
 SRC = main.cpp \
 	Bureaucrat.cpp \
 	AForm.cpp \
-	Shrubbery.cpp \
+	ShrubberyCreationForm.cpp \
+	RobotomyRequestForm.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

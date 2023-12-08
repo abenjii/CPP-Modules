@@ -23,15 +23,22 @@ class AForm {
         virtual int getToExec() const;
         class   GradeTooHighException : public std::exception {
             virtual const char* what() const throw() {
-                return ("Too Hight Grade to sign AForm");
+                return (" Too Hight Grade to sign AForm");
             }
         };
 
         class   GradeTooLowException : public std::exception {
             virtual const char* what() const throw() {
-                return ("Too Low Grade to sign AForm");
+                return (" Too Low Grade to sign AForm");
             }
         };
+
+        class notSignedForm : public std::exception {
+            virtual const char * what() const throw () {
+                return (" Not Signed Form can't execute");
+            }
+        };
+
         class   noGradeToExec : public std::exception {
             virtual const char* what() const throw(){
                 return (" Not enought Grade to execute");
