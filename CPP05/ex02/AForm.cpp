@@ -2,7 +2,7 @@
 #include "Bureaucrat.hpp"
 
 AForm::AForm() : name("Default"), signature(false), toSign(20), toExec(20) {
-    this->signature = false;
+    //this->signature = false;
     std::cout << "AForm Default Constructor called." << std::endl;
 }
 

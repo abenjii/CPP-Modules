@@ -73,5 +73,6 @@ void    Bureaucrat::signForm(AForm &a) {
 void    Bureaucrat::executeForm(AForm const & form) {
     if (this->getGrade() > form.getToExec())
         throw AForm::noGradeToExec();
+    form.execForm(*this);
     std::cout << this->name << " executed " << form.getName() << std::endl;
 }

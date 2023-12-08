@@ -3,7 +3,7 @@
 
 int main()
 {
-    Bureaucrat a("alex", 137);
+    Bureaucrat a("alex", 13);
 
     AForm* b = new Shrubbery("A");
     try {

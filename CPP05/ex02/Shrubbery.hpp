@@ -17,11 +17,17 @@ class Shrubbery: public AForm {
 
         std::string getName() const;
 
-        void    execForm(const Bureaucrat& executor);
+        void    execForm(const Bureaucrat& executor) const;
 
-        class gradeToSignLow : public std::exception {
+        class gradeToExecLow : public std::exception {
             virtual const char* what() const throw() {
-                return ("To Low grade to sign the AForm");
+                return ("To low grade to execute this Form");
+            }
+        };
+
+        class fileNotOpen : public std::exception {
+            virtual const char * what() const throw() {
+                return ("Error file not open");
             }
         };
 };

@@ -6,7 +6,7 @@ Shrubbery::Shrubbery() : target("Default") {
     std::cout << "Shrubbery Default Constructor called." << std::endl;
 }
 
-Shrubbery::Shrubbery(std::string target) : target(target) {
+Shrubbery::Shrubbery(std::string target) : AForm("Shrubbery", 145, 137), target(target) {
     std::cout << "Shrubbery Constructor called." << std::endl;
 }
 
@@ -26,15 +26,17 @@ Shrubbery::~Shrubbery() {
     std::cout << "Shrubbery Destructor called." << std::endl;
 }
 
-void    Shrubbery::execForm(const Bureaucrat& executor) {
+void    Shrubbery::execForm(const Bureaucrat& executor) const {
     std::string fileName = this->getName() + "_shrubbery";
-
-    std::ofstream file(fileName.c_str());
+    std::ofstream file;
+    
+    file.open(fileName.c_str(), std::ofstream::out);
     try {
         if (executor.getGrade() > 137)
-            throw Shrubbery::gradeToSignLow();
-        file <<
-        "          .     .  .      +     .      .          .\n"
+            throw Shrubbery::gradeToExecLow();
+        if (!file.is_open())
+            throw Shrubbery::fileNotOpen();
+        file << "          .     .  .      +     .      .          .\n"
         "     .       .      .     #       .           .\n"
         "        .      .         ###            .      .      .\n"
         "      .      .   *#:. .:##*##:. .:#*  .      .\n"

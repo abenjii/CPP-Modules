@@ -18,9 +18,9 @@ class AForm {
         virtual ~AForm();
 
         virtual std::string getName() const = 0;
-        bool    getSignature() const;
-        int getToSign() const;
-        int getToExec() const;
+        virtual bool    getSignature() const;
+        virtual int getToSign() const;
+        virtual int getToExec() const;
         class   GradeTooHighException : public std::exception {
             virtual const char* what() const throw() {
                 return ("Too Hight Grade to sign AForm");
@@ -39,6 +39,7 @@ class AForm {
         };
 
         void    beSigned(const Bureaucrat& a);
+        virtual void    execForm(const Bureaucrat& executor) const = 0;
 
 };
 
