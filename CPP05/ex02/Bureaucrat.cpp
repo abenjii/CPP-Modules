@@ -52,11 +52,16 @@ Bureaucrat::~Bureaucrat() {
     std::cout << "Bureaucrat Destructor called." << std::endl;
 }
 
-void    Bureaucrat::signForm(Form &a) {
+std::ostream& operator<<( std::ostream& o, const Bureaucrat& bur ) {
+    o << bur.getName() << ", bureaucrat grade " << bur.getGrade();
+    return o;
+}
+
+void    Bureaucrat::signForm(AForm &a) {
     try {
         a.beSigned(*this);
         if (a.getSignature() == false)
-            throw Form::GradeTooLowException();
+            throw AForm::GradeTooLowException();
         std::cout << this->getName() << " signed " << a.getName() << std::endl;
     }
     catch (std::exception &excep) {
@@ -65,7 +70,8 @@ void    Bureaucrat::signForm(Form &a) {
     }
 }
 
-std::ostream& operator<<( std::ostream& o, const Bureaucrat& bur ) {
-    o << bur.getName() << ", bureaucrat grade " << bur.getGrade();
-    return o;
+void    Bureaucrat::executeForm(AForm const & form) {
+    if (this->getGrade() > form.getToExec())
+        throw AForm::noGradeToExec();
+    std::cout << this->name << " executed " << form.getName() << std::endl;
 }

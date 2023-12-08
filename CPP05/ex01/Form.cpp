@@ -1,8 +1,7 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : name("Default"), toSign(20), toExec(20) {
-    this->signature = false;
+Form::Form() : name("Default"), signature(false), toSign(20), toExec(20) {
     std::cout << "Form Default Constructor called." << std::endl;
 }
 
@@ -53,6 +52,14 @@ int Form::getToExec () const {
 
 void    Form::beSigned(const Bureaucrat &a) {
     if (a.getGrade() > this->toSign)
-        throw GradeTooLowException();
+        throw Form::GradeTooLowException();
     this->signature = true;
+}
+
+std::ostream& operator<<( std::ostream& o_form, const Form& form ) {
+    o_form << "Form Name: "<< form.getName() << std::endl;
+    o_form << "Form signed status "<< form.getSignature() << std::endl;
+    o_form << "Form Grade Required: "<< form.getToSign() << std::endl;
+    o_form << "Form Grade to Execute: "<< form.getToExec() << std::endl;
+    return o_form;
 }

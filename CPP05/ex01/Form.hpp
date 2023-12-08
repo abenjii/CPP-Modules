@@ -23,18 +23,20 @@ class Form {
         int getToExec() const;
         class   GradeTooHighException : public std::exception {
             virtual const char* what() const throw() {
-                return ("Too Hight Grade Form");
+                return ("Too Hight Grade to Sign");
             }
         };
 
         class   GradeTooLowException : public std::exception {
             virtual const char* what() const throw() {
-                return ("Too Low Grade Form");
+                return ("Too Low Grade to Sign");
             }
         };
 
         void    beSigned(const Bureaucrat& a);
 
 };
+
+std::ostream& operator<<( std::ostream& o_form, const Form& form);
 
 #endif
