@@ -3,14 +3,16 @@
 # include <iostream>
 # include <string>
 # include <cstdlib>
+# include <stdint.h>
 
 class   Data {
     //private:
     public:
         int nbr;
+        Data(){};
         Data(int nbr) : nbr(nbr){};
         ~Data(){};
-};
+}; 
 
 class Serializer {
     private:
