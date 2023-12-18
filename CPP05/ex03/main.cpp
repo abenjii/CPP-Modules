@@ -10,7 +10,7 @@ int main()
 
     Intern someRandomIntern;
     AForm* rrf;
-    rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
+    rrf = someRandomIntern.makeForm("ShrubberyCreation Form", "Bender");
     if (rrf)
     {
         try {

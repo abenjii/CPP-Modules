@@ -5,7 +5,7 @@
 
 int main()
 {
-    Bureaucrat a("alex", 5);
+    Bureaucrat a("alex", 10);
 
 /*     AForm* b = new ShrubberyCreationForm("Form A");
     try {

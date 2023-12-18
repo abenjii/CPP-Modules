@@ -2,7 +2,7 @@
 
 int main()
 {
-    Bureaucrat a("alex", 26);
+    Bureaucrat a("alex", 10);
 
     Form b("Form B", 15, 15);
     try {

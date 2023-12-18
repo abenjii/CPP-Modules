@@ -16,6 +16,7 @@ class Bureaucrat {
         int getGrade() const;
         void    incrementGrade();
         void    decrementGrade();
+        
         class   GradeTooHighException : public std::exception {
             virtual const char* what() const throw() {
                 return ("My exception Too High Happened");

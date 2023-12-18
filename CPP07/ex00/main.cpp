@@ -1,8 +1,22 @@
 #include "whatever.hpp"
 
+int main( void ) {
+    int a = 2;
+    int b = 3;
+    swap( a, b );
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+    std::string c = "chaine1";
+    std::string d = "chaine2";
+    swap(c, d);
+    std::cout << "c = " << c << ", d = " << d << std::endl;
+    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+    return 0;
+}
 
-
-int main() {
+/* int main() {
     int nbr1 = 5;
     int nbr2 = 7;
 
@@ -46,13 +60,14 @@ int main() {
     std::cout << max(float1, float2) << std::endl;
     std::cout << "(min)" << std::endl;
     std::cout << min(float1, float2) << std::endl;
-/*  std::string stringD = "Compile Error";
+    std::string stringD = "Compile Error";
     float floatD = 42.2;
 
     std::cout << "- - - -   With Different Types \"Compile error\"  - - - -" << std::endl;
     swap(stringD, floatD);
     std::cout << "First argument: '" << float1 << "'" << std::endl;
     std::cout << "Secound argument: '" << float2 << "'" << std::endl;
-    std::cout << std::endl; */
+    std::cout << std::endl;
     return (0);
 }
+*/
