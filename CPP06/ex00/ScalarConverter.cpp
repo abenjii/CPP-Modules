@@ -62,7 +62,7 @@ void    ScalarConverter::converterFloat(std::string input) {
         std::cout << "float: nanf" << std::endl;
     else if (input.length() > 1 && isalpha(input[0]))
         std::cout << "float: impossible" << std::endl;
-    else if (input.length() == 1 && (input[0] >= 1 && input[0] <= 126)
+    else if (input.length() == 1 && (input[0] >= 0 && input[0] <= 126)
         && !isdigit(input[0]))
         std::cout << "float: " << toascii(input[0]) << ".0f" << std::endl;
     else if (!input.compare("-inff") || !input.compare("-inf"))
@@ -76,10 +76,10 @@ void    ScalarConverter::converterFloat(std::string input) {
         && (atof(input.c_str()) >= std::numeric_limits<float>::min()))
     {
         std::cout << "float: " << std::fixed << std::setprecision(calcPrecision(input));
-        std::cout << toFloat(input) << "f" << std::endl;
+        std::cout << toFloat(input) << ".0f" << std::endl;
     }
     else
-        std::cout << "float: impossible" << std::endl;//se atingir +/- max/min
+        std::cout << "float: impossible" << std::endl;
 }
 
 double  ScalarConverter::toDouble(std::string input) {
@@ -108,7 +108,7 @@ void    ScalarConverter::converterDouble(std::string input) {
         && (atof(input.c_str()) >= std::numeric_limits<double>::min()))
     {
         std::cout << "double: "<< std::fixed << std::setprecision(calcPrecision(input));
-        std::cout << toDouble(input) << std::endl;
+        std::cout << toDouble(input) << ".0" << std::endl;
     }
     else
         std::cout << "double: impossible" << std::endl; 
