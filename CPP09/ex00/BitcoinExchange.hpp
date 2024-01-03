@@ -10,21 +10,16 @@
 
 class   BitcoinExchange {
     private:
-        std::map<std::string, float> data;
+        std::map<std::string, std::string> data;
     public:
         BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &copy);
         BitcoinExchange& operator=(const BitcoinExchange &o_copy);
         ~BitcoinExchange();
 
-        //void    readFile(std::string fileName);
         void    validFormat(std::string fileName);
-
-        class   badExtension : public std::exception {
-            virtual const char* what() const throw() {
-                return ("Bad extension file it must be \'.csv\'.");
-            }
-        };
+        void    extractFile(std::string fileName);
+        void    printMap();
 
 
 };

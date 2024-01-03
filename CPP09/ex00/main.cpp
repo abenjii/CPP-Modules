@@ -33,8 +33,8 @@ std::map<std::string, float>    fillMap(std::string fileName) {
     return result;
 }
 
-void    printMap(std::map<std::string, float> input) {
-    std::map<std::string, float>::iterator it;
+void    printMap(std::map<std::string, std::string> input) {
+    std::map<std::string, std::string>::iterator it;
     for(it = input.begin(); it != input.end(); it++)
         std::cout << it->first << " | " << it->second << std::endl;
 }
@@ -44,14 +44,17 @@ int main(int ac, char **av) {
         try {
             BitcoinExchange myMap;
             myMap.validFormat(av[1]);
-            //myMap.readFile(av[1]);
+            myMap.extractFile(av[1]);
+            myMap.printMap();
         } catch (std::exception &e) {
             std::cout << "Error: " << e.what() << std::endl;
         }
     }
     else {
         std::cout << "Error: program need a FILE ARGUMENT \'.csv\'" << std::endl;
-        return 1; 
+        return 1;
     }
+
+    
     return (0);
 }
