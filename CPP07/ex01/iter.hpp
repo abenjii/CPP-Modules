@@ -4,8 +4,6 @@
 # include <cstring>
 # include <typeinfo>
 
-
-
 template<typename Iter, typename Func>
 void    iter(Iter* arr, size_t length, Func func) {
     for (size_t i = 0; i < length; i++)
