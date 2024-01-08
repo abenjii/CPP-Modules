@@ -26,23 +26,23 @@ void    BitcoinExchange::validFormat(std::string fileName) {
         throw std::runtime_error("Error: Bad extension file it must be \'.csv\'.");
 }
 
-void    BitcoinExchange::extractFile(std::string fileName) {
+void    BitcoinExchange::extractData() {
+    std::string fileName = "data.csv";
     std::ifstream file(fileName.c_str());
 
     if (!file.is_open())
-        throw std::runtime_error("Error: Unable to open File.");
+        throw std::runtime_error("Error: Unable to open data File.");
     else {
         std::string line;
 
         while (std::getline(file, line)) {
-            size_t sepPos = line.find('|');
-            std::cout << sepPos << std::endl;
+            size_t sepPos = line.find(',');
             if (sepPos) {
-                std::string key = line.substr(0, sepPos - 1);
-                std::string value = line.substr(sepPos + 2);
+                std::string key = line.substr(0, sepPos);
+                float value = atof(line.substr(sepPos + 1).c_str());
                 data[key] = value;
-                std::cout << key << " - ";
-                std::cout << value << std::endl;
+/*                 std::cout << key << std::endl;
+                std::cout << value << std::endl; */
             }
         }
     }
@@ -50,7 +50,192 @@ void    BitcoinExchange::extractFile(std::string fileName) {
 }
 
 void    BitcoinExchange::printMap() {
-    std::map<std::string, std::string>::iterator it;
+    std::map<std::string, float>::iterator it;
     for (it = this->data.begin(); it != this->data.end(); it++)
         std::cout << it->first << "|" << it->second << std::endl;
+}
+
+void    BitcoinExchange::runProgram(std::string arg) {
+    //std::map<std::string, std::string>result;
+    std::ifstream iFile(arg.c_str());
+
+    if(!iFile.is_open())
+        throw std::runtime_error("Error: Unable to open input File");
+    else {
+        std::string line;
+        int flag = 0;
+        while (std::getline(iFile, line)) {
+            if (line == "date | value" && !flag) {
+                flag = 1;
+                continue;
+            }
+                //std::cout << line << std::endl;
+            else {
+                std::string date = getDate(line);
+                float value = getValue(line);
+                float dValue;
+
+                if (date == line || !checkDate(line) || !invDate(date))
+                    std::cout << "Error: bad input => " << line << std::endl;
+                else if (!notPositive(line))
+                    std::cout << "Error: not a positive number." << std::endl;
+                else if (maxExpected(line))
+                    std::cout << "Error: too large a number." << std::endl;
+                else {
+                    std::map<std::string, float>::iterator it;
+                    std::string fDate = date;        
+                    for (it = this->data.begin(); it != this->data.end(); it++) {
+                        if (it->first == date) {
+                            //std::cout << "file_date = " << date << std::endl;
+                            //std::cout << "string = " << it->first << std::endl;
+                            //std::cout << "float = " << it->second << std::endl;
+                            dValue = value * it->second;
+                            //std::cout << "dvalue = " << dValue << std::endl;
+                            break ;
+                        }
+                        else if (it->first > date) {
+                            //std::cout << "map_data = " << it->first << "$" << std::endl;
+                            //std::cout << "date = " << date  << "$" << std::endl;
+                            date = resize(date);
+                            //std::cout << "resized = " << date  << "$" << std::endl;
+                            it = this->data.begin();
+                        }
+                    }
+                    std::cout << fDate << " => " << value << " = " << dValue << std::endl;
+                }
+            }
+        }
+    }
+}
+
+std::string    BitcoinExchange::getDate(std::string line) {
+    int sepFlag = 0;
+    int spaceb4 = 0;
+    int spaceAf = 0;
+    std::string result;
+    for (unsigned int i = 0; i < line.length(); i++) {
+        if (line[i] == '|') {
+            sepFlag++;
+            if (line[i - 1] == ' ')
+                spaceb4++;
+            if (line[i + 1] == ' ')
+                spaceAf++;
+        }
+    }
+    if (sepFlag == 1 && spaceb4 == 1 && spaceAf == 1)
+        result = line.substr(0, line.find('|') - 1);
+    else
+        result = line.substr();
+    return result;
+}
+
+float   BitcoinExchange::getValue(std::string line) {
+    float res = 0;;
+    size_t sPos = line.find('|');
+    std::string subline;
+    if (sPos + 2 < line.size())
+        subline = line.substr(sPos + 2, line.size());
+    res = atof(subline.c_str());
+    return res;
+}
+
+bool    BitcoinExchange::isNumber(std::string line) {
+    bool fDigit = false;
+    bool fDot = false;
+
+    for (unsigned int i = 0; i < line.length(); i++) {
+        if (std::isdigit(line[i]))
+            fDigit = true;
+        else if (line[i] == '.' && !fDot)
+            fDot = true;
+        else
+            return false;
+    }
+    return fDigit;
+}
+
+bool    BitcoinExchange::invDate(std::string date) {
+    bool res = true;
+    for (size_t i = 0; i < date.length(); i++) {
+        if (isalpha(date[i]))
+            res = false;
+    }
+    return res;
+}
+
+bool    BitcoinExchange::notPositive(std::string line) {
+    bool res = true;
+    std::string subline;
+    size_t sPos = line.find('|');
+    if (line.size() >= sPos + 2) 
+        subline = line.substr(sPos + 2, line.length());
+    if (isalpha(subline[0]))
+        res = false;
+    if(atof(subline.c_str()) < 0)
+        res = false;
+    return res;
+}
+
+bool    BitcoinExchange::maxExpected(std::string line) {
+    bool res = false;
+    std::string subline;
+    size_t sPos = line.find('|');
+    if (line.size() >= sPos + 2)
+        subline = line.substr(sPos + 2, line.length());
+    if (atof(subline.c_str()) > MAX)
+        return true;
+    //std::cout << "string: " << subline << std::endl;
+    //std::cout << "atof: " << atof(subline.c_str()) << std::endl;
+    return res;
+}
+
+bool    BitcoinExchange::checkDate(std::string line) {
+    bool res = true;
+    size_t sPos = line.find('|');
+    std::string subline;
+    int dateSep = 0;
+    int year = 0;
+    int month = 0;
+    int day = 0;
+    if (line.size() >= sPos)
+        subline = line.substr(0, sPos - 1);
+    for (size_t i = 0;i < line.length();i++) {
+        if (line[i] == '-')
+            dateSep++;
+    }
+    if (subline.size() == 10 && dateSep == 2) {
+        year = atoi(line.substr(0, 4).c_str());
+        if (year < 2009)
+            res = false;
+        month = atoi(line.substr(5, 6).c_str());
+        if (month < 1 || month > 12)
+            res = false;
+        day = atoi(line.substr(8, 9).c_str());
+        if (day < 1 || day > 31)
+            res = false;
+    }
+    return res;
+}
+
+std::string BitcoinExchange::resize(std::string line) {
+    std::string res;
+    std::stringstream ss;
+    for (size_t i = 0; i < line.length(); i++) {
+        if (line[i] == '-')
+            i++;
+        res+= line[i];
+    }
+    int int_res = atoi(res.c_str());
+    //std::cout << "RESIZED :" << int_res << std::endl;
+    int_res--;
+    //std::cout << "RESIZED-- :" << int_res << std::endl;
+    ss << int_res;
+    res = ss.str();
+    //std::cout << "before put == " << res << std::endl;
+    if (res.length() == 8) {
+        res.insert(4, "-");
+        res.insert(7, "-");
+    }
+    //std::cout << "after put == " << res << std::endl;
+    return res;
 }

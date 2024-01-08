@@ -43,9 +43,10 @@ int main(int ac, char **av) {
     if (ac == 2) {
         try {
             BitcoinExchange myMap;
+            myMap.extractData();
             myMap.validFormat(av[1]);
-            myMap.extractFile(av[1]);
-            myMap.printMap();
+            //myMap.printMap();
+            myMap.runProgram(av[1]);
         } catch (std::exception &e) {
             std::cout << "Error: " << e.what() << std::endl;
         }
