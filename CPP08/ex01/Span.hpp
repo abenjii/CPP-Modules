@@ -18,8 +18,8 @@ class Span {
         Span(const Span &copy);
         Span& operator=(const Span &o_copy);
         void    addNumber(int nbr);
-        void    shortestSpan();
-        void    longestSpan();
+        int    shortestSpan();
+        int    longestSpan();
 
         class emptyVector : public std::exception {
             virtual const char* what() const throw () {

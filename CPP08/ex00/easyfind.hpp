@@ -7,20 +7,13 @@
 # include <list>
 # include <map>
 
-class notFound : public std::exception {
-    virtual const char* what() const throw() {
-        return ("Number not founded!");
-    }
-};
-
 template<typename T>
 typename T::iterator easyfind(T& container, int nbr) {
     typename T::iterator result = std::find(container.begin(), container.end(), nbr);
     if (result == container.end()) {
-        throw notFound();
+        throw std::runtime_error("Error: Number not founded!");
     }
     return result;
 };
-
 
 #endif

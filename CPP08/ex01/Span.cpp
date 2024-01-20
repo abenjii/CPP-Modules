@@ -22,13 +22,10 @@ Span::~Span() {
 }
 
 void    Span::addNumber(int nbr) {
-    try {
-        if (this->myVec.size() >= this->maxSize)
-            throw fullStore();
-        this->myVec.push_back(nbr);
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+    if (myVec.size() == maxSize)
+        throw std::runtime_error("Error: Span already full on elements.");
+    this->myVec.push_back(nbr);
+
 }
 
 int Span::getMaxSize() const {
@@ -36,46 +33,32 @@ int Span::getMaxSize() const {
 }
 
 void    Span::printSpan() {
-    try {
-        if (myVec.empty())
-            throw emptyVector();
-        for (std::vector<int>::iterator print = myVec.begin(); print != myVec.end(); print++)
-        {
-            std::cout << *print << std::endl;
-        }
-    } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
-    }
+    if (myVec.empty())
+        throw std::runtime_error("Error: No Numbers Stored in the Span.");
+    for (std::vector<int>::iterator print = myVec.begin(); print != myVec.end(); print++)
+        std::cout << *print << std::endl;
 }
 
-void    Span::shortestSpan() {
-    int shortest = myVec.at(0);
-    try {    
-        if (myVec.empty())
-            throw emptyVector();
-    } catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
-    for (std::vector<int>::iterator result = myVec.begin(); result != myVec.end(); result++)
-    {
-        if (*result < shortest)
-            shortest = *result;
-    }
-    std::cout << "The Shortest Number is: " << shortest << std::endl;
+int    Span::shortestSpan() {
+    if (myVec.empty() || myVec.size() < 2)
+        throw std::runtime_error("Error: No Numbers Stored in the Span.");
+    int theDiff =
 }
 
-void    Span::longestSpan() {
-    int shortest = myVec.at(0);
-    try {    
-        if (myVec.empty())
-            throw emptyVector();
-    } catch (std::exception &e){
-        std::cout << e.what() << std::endl;
-    }
+int     Span::longestSpan() {
+    if (myVec.empty() || myVec.size() < 2)
+        throw std::runtime_error("Error: Not Enough Numbers Stored in the Span.");
+    int minValue = myVec.at(0);
     for (std::vector<int>::iterator result = myVec.begin(); result != myVec.end(); result++)
     {
-        if (*result > shortest)
-            shortest = *result;
+        if (*result < minValue)
+            minValue = *result;
     }
-    std::cout << "The longest Number is: " << shortest << std::endl;
+    int maxValue = myVec.at(0);
+    for (std::vector<int>::iterator result = myVec.begin(); result != myVec.end(); result++)
+    {
+        if (*result > maxValue)
+            maxValue = *result;
+    }
+    return maxValue - minValue << std::endl;
 }

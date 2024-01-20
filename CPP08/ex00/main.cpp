@@ -12,6 +12,9 @@ int main() {
     intVec.push_back(345);
     intVec.push_back(1);
     intVec.push_back(935355);
+    std::vector<int>::iterator it;
+    for (size_t i = 0; i < intVec.size(); i++)
+        std::cout << "intVect[]: " << intVec[i] << std::endl;
 
     try {
         std::vector<int>::iterator res = easyfind(intVec, 1);
@@ -34,6 +37,10 @@ int main() {
     myList.push_back(7345);
     myList.push_back(854);
     myList.push_front(9);
+    std::list<int>::iterator it_l;
+    for (it_l = myList.begin(); it_l != myList.end(); it_l++) {
+        std::cout << "myList[]: " << *it_l << std::endl;
+    }
 
     try {
         std::list<int>::iterator resList = easyfind(myList, 9);
@@ -43,5 +50,6 @@ int main() {
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
+
     return (0);
 }
