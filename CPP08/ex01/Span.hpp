@@ -20,18 +20,6 @@ class Span {
         void    addNumber(int nbr);
         int    shortestSpan();
         int    longestSpan();
-
-        class emptyVector : public std::exception {
-            virtual const char* what() const throw () {
-                return("No Numbers Stored in the Span.");
-            }
-        };
-
-        class fullStore : public std::exception {
-            virtual const char* what() const throw() {
-                return ("Span already full on elements.");
-            }
-        };
         int getMaxSize() const;
         void    printSpan();
 };

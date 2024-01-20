@@ -1,31 +1,24 @@
 #include "Span.hpp"
 
 int main() {
-/*     Span mySpan(10);
-    std::srand((std::time(0)));
-    for (int i = 0; i < mySpan.getMaxSize(); i++)
-    {
-        mySpan.addNumber(std::rand() % 100);
-    }
-    Span mySpan2 = mySpan;
-    std::cout << "==== mySpan2 ====\n";
-    mySpan2.printSpan();
-    std::cout << "==== mySpan ====\n";
-    mySpan.printSpan();
-    mySpan.addNumber(42); //test throw message when full */
-
-    Span mySpan3(10);
+    Span mySpan(10);
     try {
-        mySpan3.shortestSpan(); //throw message when empty  !!!NOT WORKING!!!
-        mySpan3.longestSpan(); //throw message when empty
+        //std::cout << mySpan3.longestSpan() << std::endl;
+        //std::cout << mySpan3.shortestSpan() << std::endl;
+        mySpan.addNumber(-10);
+        mySpan.addNumber(-22);
+        mySpan.addNumber(10);
+        mySpan.addNumber(0);
+        mySpan.addNumber(43);
+        mySpan.addNumber(60);
+        mySpan.addNumber(57);
+        mySpan.addNumber(34);
+        mySpan.addNumber(41);
+        //mySpan.addNumber(123);
+        std::cout << mySpan.longestSpan() << std::endl;
+        std::cout << mySpan.shortestSpan() << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
     }
-    mySpan3.addNumber(-10);
-    mySpan3.addNumber(-42);
-    mySpan3.addNumber(10);
-    mySpan3.addNumber(0);
-    mySpan3.addNumber(42);
-
-    std::cout << mySpan3.longestSpan() << std::endl;
-    mySpan3.shortestSpan();
     return (0);
 }

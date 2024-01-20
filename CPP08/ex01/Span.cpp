@@ -39,10 +39,25 @@ void    Span::printSpan() {
         std::cout << *print << std::endl;
 }
 
-int    Span::shortestSpan() {
+int    Span::shortestSpan(){
     if (myVec.empty() || myVec.size() < 2)
         throw std::runtime_error("Error: No Numbers Stored in the Span.");
-    int theDiff =
+    std::vector<int>::iterator it;
+    int shortDiff = myVec.at(0) - myVec.at(1);
+    for (size_t i = 0; i != myVec.size(); i++) {
+        for (size_t j = 0 ; j != myVec.size(); j++) {
+            int nb1 = myVec[i];
+            int nb2 = myVec[j];
+            if (i != j) {
+                int res = nb1 - nb2;
+                if (res < 0)
+                    res *= -1;
+                if (res < shortDiff)
+                    shortDiff = res;
+            }
+        }
+    }
+    return shortDiff;
 }
 
 int     Span::longestSpan() {
@@ -60,5 +75,5 @@ int     Span::longestSpan() {
         if (*result > maxValue)
             maxValue = *result;
     }
-    return maxValue - minValue << std::endl;
+    return maxValue - minValue;
 }
