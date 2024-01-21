@@ -69,14 +69,17 @@ void    BitcoinExchange::runProgram(std::string arg) {
                 flag = 1;
                 continue;
             }
-                //std::cout << line << std::endl;
+            else if (!line.compare(""))
+                std::cout << "Error: empty line." << std::endl;
             else {
                 std::string date = getDate(line);
                 float value = getValue(line);
                 float dValue;
 
-                if (date == line || !checkDate(line) || !invDate(date))
+                if (date == line || !invDate(date))
                     std::cout << "Error: bad input => " << line << std::endl;
+                else if (!checkDate(line))
+                    std::cout << "Error: invalid date => " << line << std::endl;
                 else if (!notPositive(line))
                     std::cout << "Error: not a positive number." << std::endl;
                 else if (maxExpected(line))
@@ -86,18 +89,11 @@ void    BitcoinExchange::runProgram(std::string arg) {
                     std::string fDate = date;        
                     for (it = this->data.begin(); it != this->data.end(); it++) {
                         if (it->first == date) {
-                            //std::cout << "file_date = " << date << std::endl;
-                            //std::cout << "string = " << it->first << std::endl;
-                            //std::cout << "float = " << it->second << std::endl;
                             dValue = value * it->second;
-                            //std::cout << "dvalue = " << dValue << std::endl;
                             break ;
                         }
                         else if (it->first > date) {
-                            //std::cout << "map_data = " << it->first << "$" << std::endl;
-                            //std::cout << "date = " << date  << "$" << std::endl;
                             date = resize(date);
-                            //std::cout << "resized = " << date  << "$" << std::endl;
                             it = this->data.begin();
                         }
                     }
@@ -184,8 +180,6 @@ bool    BitcoinExchange::maxExpected(std::string line) {
         subline = line.substr(sPos + 2, line.length());
     if (atof(subline.c_str()) > MAX)
         return true;
-    //std::cout << "string: " << subline << std::endl;
-    //std::cout << "atof: " << atof(subline.c_str()) << std::endl;
     return res;
 }
 
@@ -199,7 +193,7 @@ bool    BitcoinExchange::checkDate(std::string line) {
     int day = 0;
     if (line.size() >= sPos)
         subline = line.substr(0, sPos - 1);
-    for (size_t i = 0;i < line.length();i++) {
+    for (size_t i = 0;i < subline.length();i++) {
         if (line[i] == '-')
             dateSep++;
     }
@@ -211,9 +205,17 @@ bool    BitcoinExchange::checkDate(std::string line) {
         if (month < 1 || month > 12)
             res = false;
         day = atoi(line.substr(8, 9).c_str());
-        if (day < 1 || day > 31)
+        if ((day < 1 || day > 31) && (month == 1 || month == 3 || month == 5 
+            || month == 7 || month == 8 || month == 10 || month == 12))
+            res = false;
+        if ((day < 1 || day > 30) && (month == 4 || month == 6 || month == 9 
+            || month == 11))
+            res = false;
+        if (year % 4 != 0 && month == 2 && (day < 1 || day > 28))
             res = false;
     }
+    else
+        res = false;
     return res;
 }
 
@@ -226,16 +228,12 @@ std::string BitcoinExchange::resize(std::string line) {
         res+= line[i];
     }
     int int_res = atoi(res.c_str());
-    //std::cout << "RESIZED :" << int_res << std::endl;
     int_res--;
-    //std::cout << "RESIZED-- :" << int_res << std::endl;
     ss << int_res;
     res = ss.str();
-    //std::cout << "before put == " << res << std::endl;
     if (res.length() == 8) {
         res.insert(4, "-");
         res.insert(7, "-");
     }
-    //std::cout << "after put == " << res << std::endl;
     return res;
 }
