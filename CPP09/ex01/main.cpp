@@ -68,8 +68,8 @@ int main(int ac, char **av) {
     try {
         RPN stack;
         stack.exportData(av[1]);
-        //stack.print();
         stack.resolution();
+        stack.print();
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }

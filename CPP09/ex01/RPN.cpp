@@ -32,7 +32,7 @@ int RPN::isSymbol(int c) {
 }
 
 int RPN::isNum(int c) {
-    if (c >= -9 && c <= 9)
+    if (c >= 0 && c <= 9)
         return c;
     return 0;
 }
@@ -75,70 +75,7 @@ void    RPN::resolution() {
         revStack.push(this->data.top());
         this->data.pop();
     }
-    //the stack in the correct order to calculate
-    //    7 7 * 7 -
-    //    - 7 * 7 7
-    int operand1 = 0;
-    int operand2 = 0;
-    int result = 0;
-    int res2 = 0;
-    int signal = 0;
-    while (!revStack.empty()) {
-        if (isNum(revStack.top())) {
-            operand1 = revStack.top();
-            revStack.pop();
-            if (isNum(revStack.top())) {
-                operand2 = revStack.top();
-                revStack.pop();
-                if(isSymbol(revStack.top())) {
-                    signal = revStack.top();
-                    revStack.pop();
-                    if (isSymbol(revStack.top())) {
-                        if (signal == 43)
-                            res2 = operand1 + operand2;
-                        else if (signal == 45)
-                            res2 = operand1 - operand2;
-                        else if (signal == 47)
-                            res2 = operand1 / operand2;
-                        else if (signal == 42)
-                            res2 = operand1 * operand2;
-                        signal = 0;
-                    }
-                    if (signal == 43)
-                        result = operand1 + operand2;
-                    else if (signal == 45)
-                        result = operand1 - operand2;
-                    else if (signal == 47)
-                        result = operand1 / operand2;
-                    else if (signal == 42)
-                        result = operand1 * operand2; 
-                }
-            }
-            else if (isSymbol(revStack.top())) {
-                signal = revStack.top();
-                revStack.pop();
-                if (signal == 43)
-                    result += operand1;
-                else if (signal == 45)
-                    result -= operand1;
-                else if (signal == 47)
-                    result /= operand1;
-                else if (signal == 42)
-                    result *= operand1; 
-            }
-        }
-        if (isSymbol(revStack.top())) {
-            signal = revStack.top();
-            revStack.pop();
-            if (signal == 43)
-                result += res2;
-            else if (signal == 45)
-                result -= res2;
-            else if (signal == 47)
-                result /= res2;
-            else if (signal == 42)
-                result *= res2; 
-        }
-    }
+    float result = 0;
+
     std::cout << result << std::endl;
 }

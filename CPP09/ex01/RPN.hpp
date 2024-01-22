@@ -11,10 +11,11 @@
 class RPN : public std::stack<int, std::deque<int> >{
     private:
         std::stack<int> data;
+
+        RPN(const RPN &copy);
+        RPN& operator=(const RPN &o_copy);
     public:
         RPN();
-        //RPN(const RPN &copy);
-        //RPN& operator=(const RPN &o_copy);
         ~RPN();
         typedef typename std::deque<int>::iterator iterator;
         iterator being(){return this->c.begin();};
@@ -25,9 +26,6 @@ class RPN : public std::stack<int, std::deque<int> >{
         void    exportData(std::string arg);
         void    print();
         void    resolution();
-
-
-
 };
 
 
