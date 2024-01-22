@@ -7,12 +7,13 @@
 # include <ctime>
 # include <limits>
 # include <stack>
+# include <deque>
 
 template<typename T>
 class MutantStack : public std::stack<T, std::deque<T> > {
     public:
         MutantStack() {
-            std::cout << "MutantStack Default Constructor called." << std::endl;
+            //std::cout << "MutantStack Default Constructor called." << std::endl;
         };
         MutantStack& operator=(const MutantStack &o_copy) {
             if (this != &o_copy)
@@ -24,7 +25,7 @@ class MutantStack : public std::stack<T, std::deque<T> > {
             *this = copy;
         };
         ~MutantStack() {
-            std::cout << "MutantStack Destructor called." << std::endl;
+            //std::cout << "MutantStack Destructor called." << std::endl;
         };
         typedef typename std::deque<T>::iterator iterator;
         

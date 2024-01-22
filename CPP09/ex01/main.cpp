@@ -22,7 +22,7 @@ int mSymbols(std::string arg) {
 }
 
 int isSymbol_arg(char c) {
-    if (c == '-' || c == '+' || c == '/' || c == '*' || c == ' ')
+    if (c == '-' || c == '+' || c == '/' || c == '*')
         return 1;
     return 0;
 }
@@ -30,14 +30,21 @@ int isSymbol_arg(char c) {
 int checkValue(std::string arg) {
     std::string value;
     for (int i = 0; arg[i]; i++) {
-        if (!isSymbol_arg(arg[i]))
+        if ((!isSymbol_arg(arg[i]) && arg[i] != ' ')) {
+            if (isdigit(arg[i + 1]))
+                return 0;
             value += arg[i];
-        else if (isSymbol_arg(arg[i])) {
+            std::cout << "AQUI=" << value << std::endl;
             int check = atoi(value.c_str());
-            if (check < -9 || check > 9)
+            if (check > 9)
                 return 0;
             value.clear();
         }
+        if (isSymbol_arg(arg[i]) && (arg[i + 1] != '\0' && !isdigit(arg[i + 1]))) {
+            return 0;
+        }
+        else
+            continue ;
     }
     return 1;
 }
@@ -50,8 +57,22 @@ int justSymbols(std::string arg) {
     return 1;
 }
 
+int cSymbAndDig(char *arg) {
+    int cDigit = 0;
+    int cSymb = 0;
+    for (int i = 0; arg[i]; i++) {
+        if (isdigit(arg[i]))
+            cDigit++;
+        if (isSymbol_arg(arg[i]))
+            cSymb++;
+    }
+    if (cDigit != cSymb + 1)
+        return 0;
+    return 1;
+}
+
 int verifyArgs(char *av) {
-    if (!mSymbols(av) || !notSymbOrNum(av))
+    if (!mSymbols(av) || !notSymbOrNum(av) || !cSymbAndDig(av))
         return 0;
     if (!checkValue(av))
         return 0;
