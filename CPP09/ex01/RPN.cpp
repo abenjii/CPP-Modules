@@ -31,27 +31,20 @@ int RPN::isSymbol(int c) {
     return 0;
 }
 
-int RPN::isNum(int c) {
-    if (c >= 0 && c <= 9)
-        return c;
-    return 0;
+void    RPN::print() {
+    while (!this->data.empty()) {
+        std::cout << "stack: " << this->data.top() << std::endl;
+        this->data.pop();
+    }
 }
 
-void    RPN::exportData(std::string arg) {
+void    RPN::resolution(std::string arg) {
     std::string sValue;
     int value = 0;
+    std::string symbs = "";
     for (int i = 0; arg[i]; i++) {
-        if (isSymbol(arg[i]) && (arg[i+1] == ' ' || !arg[i+1])) {
-            value = arg[i];
-            this->data.push(value);
-        }
-        else if (isSymbol(arg[i]) && isdigit(arg[i+1])) {
-            sValue += arg[i];
-            sValue += arg[++i];
-            //std::cout << "sValue: " << sValue << std::endl; 
-            value = atoi(sValue.c_str());
-            sValue.clear();
-            this->data.push(value);
+        if (isSymbol(arg[i])) {
+            symbs += arg[i];
         }
         else if (!isSymbol(arg[i]) && arg[i] != ' ' && arg[i+1] == ' ') {
             sValue += arg[i];
@@ -60,21 +53,20 @@ void    RPN::exportData(std::string arg) {
             this->data.push(value);
         }
     }
-}
-
-void    RPN::print() {
-    while (!this->data.empty()) {
-        std::cout << "stack: " << this->data.top() << std::endl;
-        this->data.pop();
-    }
-}
-
-void    RPN::resolution() {
     std::stack<int> revStack;
-    while (!this->data.empty()) {
-        revStack.push(this->data.top());
-        this->data.pop();
+    while (!data.empty()) {
+        revStack.push(data.top());
+        data.pop();
     }
+    while (!revStack.empty()) {
+        std::cout << "RevStack = " << revStack.top() << std::endl;
+        revStack.pop();
+    }
+    //verificar se o argumento comeca com 2 numeros
+
+
+
+    std::cout << "Str = " << symbs << std::endl;
     float result = 0;
 
     std::cout << result << std::endl;

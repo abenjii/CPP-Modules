@@ -10,11 +10,23 @@ int notSymbOrNum(std::string arg) {
 }
 
 int mSymbols(std::string arg) {
-    for (int i = arg.length() - 1; i >= 0; i--) {
-        
+    size_t k = 0;
+    while (k < arg.length()) {
+        if (arg[k] != ' ')
+            break;
+        k++;
     }
-    if (arg[arg.length() - 1] != '-' && arg[arg.length() - 1] != '+'
-        && arg[arg.length() - 1] != '/' && arg[arg.length() - 1] != '*')
+    if (arg[k] == '-' || arg[k] == '+'
+        || arg[k] == '/' || arg[k] == '*')
+        return 0;
+    int j = arg.length() - 1;
+    while (j >= 0) {
+        if (arg[j] != ' ')
+            break;
+        j--;
+    }
+    if (arg[j] != '-' && arg[j] != '+'
+        && arg[j] != '/' && arg[j] != '*')
         return 0;
     for (int i = 0; arg[i]; i++) {
         if ((arg[i] == '+' || arg[i] == '-' || arg[i] == '*' || arg[i] == '/')
@@ -43,7 +55,7 @@ int checkValue(std::string arg) {
                 return 0;
             value.clear();
         }
-        if (isSymbol_arg(arg[i]) && (arg[i + 1] != '\0' && !isdigit(arg[i + 1]))) {
+        if (isSymbol_arg(arg[i]) && (arg[i + 1] != '\0' && !isdigit(arg[i + 1]) && arg[i + 1] != ' ')) {
             return 0;
         }
         else
@@ -74,15 +86,34 @@ int cSymbAndDig(char *arg) {
     return 1;
 }
 
+int someSpace(char *arg) {
+    for (size_t i = 0; arg[i]; i++) {
+        if ((isdigit(arg[i]) || isSymbol_arg(arg[i])) && (isdigit(arg[i+1]) || isSymbol_arg(arg[i+1])))
+            return 0;
+    }
+    return 1;
+}
+
+
 int verifyArgs(char *av) {
-    if (!mSymbols(av) || !notSymbOrNum(av) || !cSymbAndDig(av))
-        return 0;
-    if (!checkValue(av))
+    if (!mSymbols(av) || !notSymbOrNum(av) || !cSymbAndDig(av) || !checkValue(av))
         return 0;
     if (justSymbols(av))
         return 0;
+    if (!someSpace(av))
+        return 0;
     return 1;
 }
+
+int countSymbols(char * arg) {
+    int res = 0;
+    for (size_t i = 0; arg[i]; i++) {
+        if (arg[i] == '+' || arg[i] == '-' || arg[i] == '*' || arg[i] == '/')
+            res++;
+    }
+    return res;
+}
+
 
 int main(int ac, char **av) {
     if (ac != 2 || !verifyArgs(av[1])) {
@@ -91,8 +122,8 @@ int main(int ac, char **av) {
     }
     try {
         RPN stack;
-        stack.exportData(av[1]);
-        stack.resolution();
+        //std::cout << "AQUI=" << countSymbols(av[1]) << std::endl;
+        stack.resolution(av[1]);
         stack.print();
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;

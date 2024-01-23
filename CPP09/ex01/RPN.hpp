@@ -19,10 +19,9 @@ class RPN {
         ~RPN();
 
         int isSymbol(int c);
-        int isNum(int c);
-        void    exportData(std::string arg);
+        //int isNum(int c);
         void    print();
-        void    resolution();
+        void    resolution(std::string arg);
 };
 
 
