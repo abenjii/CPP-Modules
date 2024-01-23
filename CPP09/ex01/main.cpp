@@ -10,6 +10,9 @@ int notSymbOrNum(std::string arg) {
 }
 
 int mSymbols(std::string arg) {
+    for (int i = arg.length() - 1; i >= 0; i--) {
+        
+    }
     if (arg[arg.length() - 1] != '-' && arg[arg.length() - 1] != '+'
         && arg[arg.length() - 1] != '/' && arg[arg.length() - 1] != '*')
         return 0;
@@ -34,7 +37,7 @@ int checkValue(std::string arg) {
             if (isdigit(arg[i + 1]))
                 return 0;
             value += arg[i];
-            std::cout << "AQUI=" << value << std::endl;
+            //std::cout << "AQUI=" << value << std::endl;
             int check = atoi(value.c_str());
             if (check > 9)
                 return 0;
