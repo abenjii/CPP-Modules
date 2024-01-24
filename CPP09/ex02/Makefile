@@ -4,6 +4,7 @@ CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -fsanitize=address
 RM = rm -rf
 
 SRC = main.cpp \
+		PmergeMe.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 
