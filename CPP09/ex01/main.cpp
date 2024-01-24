@@ -94,11 +94,25 @@ int someSpace(char *arg) {
     return 1;
 }
 
+int firstTwo(char *arg) {
+    int flag = 0;
+    for (int i = 0; arg[i]; i++) {
+        if (isdigit(arg[i]) && flag == 0)
+            flag = 1;
+        else if (isdigit(arg[i]) && flag == 1)
+            return 1;
+        else if (arg[i] == ' ')
+            continue ;
+        else
+            return 0; 
+    }
+    return 1;
+}
 
 int verifyArgs(char *av) {
     if (!mSymbols(av) || !notSymbOrNum(av) || !cSymbAndDig(av) || !checkValue(av))
         return 0;
-    if (justSymbols(av))
+    if (justSymbols(av) || !firstTwo(av))
         return 0;
     if (!someSpace(av))
         return 0;
@@ -113,6 +127,7 @@ int countSymbols(char * arg) {
     }
     return res;
 }
+
 
 
 int main(int ac, char **av) {

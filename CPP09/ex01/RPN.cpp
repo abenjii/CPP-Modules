@@ -41,10 +41,10 @@ void    RPN::print() {
 void    RPN::resolution(std::string arg) {
     std::string sValue;
     int value = 0;
-    std::string symbs = "";
+    std::string symb = "";
     for (int i = 0; arg[i]; i++) {
         if (isSymbol(arg[i])) {
-            symbs += arg[i];
+            symb += arg[i];
         }
         else if (!isSymbol(arg[i]) && arg[i] != ' ' && arg[i+1] == ' ') {
             sValue += arg[i];
@@ -58,16 +58,50 @@ void    RPN::resolution(std::string arg) {
         revStack.push(data.top());
         data.pop();
     }
-    while (!revStack.empty()) {
+/*     while (!revStack.empty()) {
         std::cout << "RevStack = " << revStack.top() << std::endl;
         revStack.pop();
+    } */
+    int result = 0;
+    int nbr1 = 0;
+    int nbr2 = 0;
+    int k = 0;
+    while (revStack.size() != 1) {
+        nbr1 = revStack.top();
+        revStack.pop();
+        nbr2 = revStack.top();
+        revStack.pop();
+        //std::cout << "nbr1 = " << nbr1 << std::endl;
+        //std::cout << "nbr2 = " << nbr2 << std::endl;
+        //std::cout << "symb[] =" << symb[k] << std::endl;
+        if (symb[k]) {
+            if (symb[k] == '+') {
+                result = nbr1 + nbr2;
+                //std::cout << "result = " << result << std::endl;
+            }
+            else if (symb[k] == '-') {
+                result = nbr1 - nbr2;
+                //std::cout << "result = " << result << std::endl;
+            }
+            else if (symb[k] == '*') {
+                result = nbr1 * nbr2;
+                //std::cout << "result = " << result << std::endl;
+            }
+            else if (symb[k] == '/') {
+                if (nbr2 == 0)
+                    throw std::runtime_error("Error: Divisionby zero is undefined");
+                result = nbr1 / nbr2;
+                //std::cout << "result = " << result << std::endl;
+            }
+            k++;
+            //std::cout << "k = " << k << std::endl;
+        }
+        revStack.push(result);
     }
-    //verificar se o argumento comeca com 2 numeros
+    //(verificar) se o argumento comeca com 2 numeros
 
 
 
-    std::cout << "Str = " << symbs << std::endl;
-    float result = 0;
-
+    //std::cout << "Str = " << symb << std::endl;
     std::cout << result << std::endl;
 }
