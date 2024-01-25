@@ -34,7 +34,7 @@ int checkvalues(int ac, char **av) {
         int nbr = atoi(av[i]);
         if (nbr < 0)
             return 0;
-        std::cout << "nbr = " << nbr << std::endl;
+        //std::cout << "nbr = " << nbr << std::endl;
         int flag = 0;
         for (int j = 0; av[i][j]; j++) {
             //std::cout << "i = " << i << "; j = " << j << std::endl;
@@ -56,6 +56,7 @@ int main(int ac, char **av) {
     }
     PmergeMe ford;
     ford.exportData(ac, av);
+    ford.merge(ac, av);
     std::cout << "Valid\n";
     return 0;
 }

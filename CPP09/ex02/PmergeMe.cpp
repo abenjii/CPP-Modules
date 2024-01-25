@@ -15,15 +15,15 @@ PmergeMe& PmergeMe::operator=(const PmergeMe &o_copy) {
 */
 
 PmergeMe::~PmergeMe() {
-    std::cout << "PmergeMe Destructor called." << std::endl;
+    //std::cout << "PmergeMe Destructor called." << std::endl;
 }
 
-void    PmergeMe::printTmp() {
+/* void    PmergeMe::printTmp() {
     std::vector<int>::iterator it;
     for (it = tmp.begin(); it != tmp.end(); it++) {
         std::cout << "tmp = " << *it << std::endl;
     }
-}
+} */
 
 void    PmergeMe::printMyVec() {
     std::vector<int>::iterator it;
@@ -33,19 +33,13 @@ void    PmergeMe::printMyVec() {
 }
 
 void    PmergeMe::exportData(int ac, char **args) {
-    if (ac % 2 == 0) {
-        for (int i = 1; i < ac / 2; i++) {
-            int nbr = atoi(args[i]);
-            myVec.push_back(nbr);
-        }
-        this->printMyVec();
-        for (int j = ac / 2; j < ac; j++) {
-            int nbr2 = atoi(args[j]);
-            tmp.push_back(nbr2);
-        }
-        this->printTmp();
+    for (int i = 1; i < ac; i++) {
+        int nbr = atoi(args[i]);
+        myVec.push_back(nbr);
     }
-    else {
+    this->printMyVec();
+}
+/*     else {
         for (int i = 1; i < (ac / 2) + 1; i++) {
             int nbr = atoi(args[i]);
             myVec.push_back(nbr);
@@ -53,8 +47,30 @@ void    PmergeMe::exportData(int ac, char **args) {
         this->printMyVec();
         for (int j = (ac / 2) + 1; j < ac; j++) {
             int nbr2 = atoi(args[j]);
-            tmp.push_back(nbr2);
+            my.push_back(nbr2);
         }
-        this->printTmp();
+        this->printTmp(); */
+
+void    PmergeMe::merge(int ac, char**av) {
+    (void) av;
+    (void) ac;
+    std::cout << "OKAY\n";
+    std::vector<int>l_vec;
+    std::vector<int>r_vec;
+    for (size_t i = 0; i < myVec.size(); i++) {
+        if (i < myVec.size() / 2) {
+            l_vec.push_back(myVec[i]);
+        }
+        else {
+            r_vec.push_back(myVec[i]);
+        }
+    }
+    std::cout << "l.size() = " << l_vec.size() << std::endl;
+    std::cout << "l.size() = " << r_vec.size() << std::endl;
+    for (size_t i = 0; i < l_vec.size(); i++) {
+        std::cout << "l_vec[] = " << l_vec[i] << std::endl;
+    }
+    for (size_t i = 0; i < r_vec.size(); i++) {
+        std::cout << "r_vec[] = " << r_vec[i] << std::endl;
     }
 }
