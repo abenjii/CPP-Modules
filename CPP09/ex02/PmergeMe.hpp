@@ -3,15 +3,20 @@
 # include <iostream>
 # include <vector>
 # include <string>
+# include <cstdlib>
 
 class PmergeMe {
     private:
         std::vector<int> myVec;
+        std::vector<int> tmp;
+        PmergeMe(const PmergeMe &copy);
+        PmergeMe &operator=(const PmergeMe &o_copy);
     public:
         PmergeMe();
         ~PmergeMe();
-        PmergeMe(const PmergeMe &copy);
-        PmergeMe &operator=(const PmergeMe &o_copy);
+        void    exportData(int ac, char **args);
+        void    printMyVec();
+        void    printTmp();
 
 };
 
