@@ -19,7 +19,7 @@ class PmergeMe {
         void    printMyVec();
         void    printTmp();
         void    merge(int ac, char **av);
-        void    sortVec(std::vector<int> left, std::vector<int> right, std::vector<std::vector<int> >);
+        void    sortVec(std::vector<int> left, std::vector<int> right, std::vector<std::vector<int> > vector);
         int     sortVerification(std::vector<int> vector);
 };
 
