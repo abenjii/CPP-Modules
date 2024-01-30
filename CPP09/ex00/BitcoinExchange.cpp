@@ -58,23 +58,22 @@ void    BitcoinExchange::printMap() {
 void    BitcoinExchange::runProgram(std::string arg) {
     //std::map<std::string, std::string>result;
     std::ifstream iFile(arg.c_str());
-
     if(!iFile.is_open())
         throw std::runtime_error("Error: Unable to open input File");
     else {
         std::string line;
         int flag = 0;
+        if (!std::getline(iFile, line))
+                throw std::runtime_error("Error: empty line.");
         while (std::getline(iFile, line)) {
             if (line == "date | value" && !flag) {
                 flag = 1;
                 continue;
             }
-            else if (!line.compare(""))
-                std::cout << "Error: empty line." << std::endl;
             else {
                 std::string date = getDate(line);
                 float value = getValue(line);
-                float dValue;
+                float dValue = 0.0;
 
                 if (date == line || !invDate(date))
                     std::cout << "Error: bad input => " << line << std::endl;
@@ -85,8 +84,8 @@ void    BitcoinExchange::runProgram(std::string arg) {
                 else if (maxExpected(line))
                     std::cout << "Error: too large a number." << std::endl;
                 else {
-                    std::map<std::string, float>::iterator it;
                     std::string fDate = date;        
+                    std::map<std::string, float>::iterator it;
                     for (it = this->data.begin(); it != this->data.end(); it++) {
                         if (it->first == date) {
                             dValue = value * it->second;

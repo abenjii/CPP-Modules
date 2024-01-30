@@ -39,9 +39,12 @@ void    printMap(std::map<std::string, std::string> input) {
         std::cout << it->first << " | " << it->second << std::endl;
 }
 
+
+
 int main(int ac, char **av) {
     if (ac == 2) {
         try {
+
             BitcoinExchange myMap;
             myMap.extractData();
             myMap.validFormat(av[1]);

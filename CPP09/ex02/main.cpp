@@ -21,8 +21,19 @@ int checkvalues(int ac, char **av) {
     return 1;
 }
 
+int checkDoubles(int ac, char **av) {
+    for (int i = 1; i < ac; i++) {
+        for (int j = i + 1; j < ac; j++) {
+            if (atoi(av[i]) == atoi(av[j])) {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 int main(int ac, char **av) {
-    if (ac <= 2 || !checkvalues(ac, av)) {
+    if (ac <= 2 || !checkvalues(ac, av) || !checkDoubles(ac, av)) {
         std::cout << "Error\n";
         return 0;
     }
@@ -33,20 +44,20 @@ int main(int ac, char **av) {
     }
     std::cout << std::endl;
     //std::vector
-    clock_t startTime = clock();
+    time_t startTime = clock();
     ford.exportData(ac, av);
     ford.mergeVector(ac, av);
     clock_t endTime = clock();
-    double time = static_cast<double>(endTime - startTime) / 1000000;
+    double time = static_cast<double>(endTime - startTime) / 100000;
     //std::deque
-    //clock_t startTimeDeque = clock();
+    clock_t startTimeDeque = clock();
     ford.exportDataDeque(ac, av);
     ford.mergeDeque(ac, av);
     clock_t endTimeDeque = clock();
-    double timeDeque = static_cast<double>(endTimeDeque - startTime) / 1000000;
-    std::cout << "Time to precess a range of " << (ac - 1);
-    std::cout << " elements with std::deque<int>[...] : " << timeDeque << " us" << std::endl;
+    double timeDeque = static_cast<double>(endTimeDeque - startTimeDeque) / 100000;
     std::cout << "Time to precess a range of " << (ac - 1);
     std::cout << " elements with std::vector<int>[...] : " << time << " us" << std::endl;
+    std::cout << "Time to precess a range of " << (ac - 1);
+    std::cout << " elements with std::deque<int>[...] : " << timeDeque << " us" << std::endl;
     return 0;
 }
