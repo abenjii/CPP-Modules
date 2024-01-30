@@ -27,8 +27,26 @@ int main(int ac, char **av) {
         return 0;
     }
     PmergeMe ford;
+    std::cout << "Before: ";
+    for (int i = 1; i < ac; i++) {
+        std::cout << " " << atoi(av[i]);
+    }
+    std::cout << std::endl;
+    //std::vector
+    clock_t startTime = clock();
     ford.exportData(ac, av);
-    ford.merge(ac, av);
-    //std::cout << "Valid\n";
+    ford.mergeVector(ac, av);
+    clock_t endTime = clock();
+    double time = static_cast<double>(endTime - startTime) / 1000000;
+    //std::deque
+    //clock_t startTimeDeque = clock();
+    ford.exportDataDeque(ac, av);
+    ford.mergeDeque(ac, av);
+    clock_t endTimeDeque = clock();
+    double timeDeque = static_cast<double>(endTimeDeque - startTime) / 1000000;
+    std::cout << "Time to precess a range of " << (ac - 1);
+    std::cout << " elements with std::deque<int>[...] : " << timeDeque << " us" << std::endl;
+    std::cout << "Time to precess a range of " << (ac - 1);
+    std::cout << " elements with std::vector<int>[...] : " << time << " us" << std::endl;
     return 0;
 }
